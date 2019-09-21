@@ -20,9 +20,11 @@ class CreateMaterialsTable extends Migration
             $table->string('chapter');
             $table->string('file');
             $table->text('note');
-            $table->foreign('course_id')->references('id')->on('courses')
-                ->onDelete('cascade');
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
+
+//            $table->foreign('course_id')->references('id')->on('courses')
+//                ->onDelete('cascade');
         });
     }
 

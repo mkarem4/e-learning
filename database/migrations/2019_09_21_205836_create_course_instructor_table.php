@@ -19,6 +19,12 @@ class CreateCourseInstructorTable extends Migration
             $table->integer('instructor_id')->unsigned();
 
             $table->timestamps();
+
+//            $table->foreign('course_id')->references('id')->on('courses')
+//                ->onDelete('cascade');
+//
+//            $table->foreign('instructor_id')->references('id')->on('courses')
+//                ->onDelete('cascade');
         });
     }
 

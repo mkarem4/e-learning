@@ -1,5 +1,4 @@
-<?php$table->foreign('course_id')->references('id')->on('courses')
-                ->onDelete('cascade');
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -18,9 +17,11 @@ class CreateExamsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('degree');
-            $table->foreign('course_id')->references('id')->on('courses')
-                ->onDelete('cascade');
+            $table->integer('course_id')->unsigned();
             $table->timestamps();
+
+//            $table->foreign('course_id')->references('id')->on('courses')
+//                ->onDelete('cascade');
         });
     }
 

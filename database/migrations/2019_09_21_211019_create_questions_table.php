@@ -19,9 +19,12 @@ class CreateQuestionsTable extends Migration
             $table->string('question2');
             $table->string('question3');
             $table->string('degree');
-            $table->foreign('exam_id')->references('id')->on('exams')
-                ->onDelete('cascade');
+            $table->integer('exam_id')->unsigned();
+
             $table->timestamps();
+
+//            $table->foreign('exam_id')->references('id')->on('exams')
+//                ->onDelete('cascade');
         });
     }
 

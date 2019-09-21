@@ -16,13 +16,18 @@ class CreateExamResultsTable extends Migration
         Schema::create('exam_results', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('degree');
-            $table->foreign('exam_id')->references('id')->on('exams')
-                ->onDelete('cascade');
-            $table->foreign('question_id')->references('id')->on('questions')
-                ->onDelete('cascade');
-            $table->foreign('student_id')->references('id')->on('students')
-                ->onDelete('cascade');
+            $table->integer('exam_id')->unsigned();
+            $table->integer('question_id')->unsigned();
+            $table->integer('student_id')->unsigned();
+
             $table->timestamps();
+
+//            $table->foreign('exam_id')->references('id')->on('exams')
+//                ->onDelete('cascade');
+//            $table->foreign('question_id')->references('id')->on('questions')
+//                ->onDelete('cascade');
+//            $table->foreign('student_id')->references('id')->on('students')
+//                ->onDelete('cascade');
         });
     }
 

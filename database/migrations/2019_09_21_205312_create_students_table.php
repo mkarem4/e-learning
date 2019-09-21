@@ -19,10 +19,12 @@ class CreateStudentsTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
-            $table->foreign('level_id')->references('id')->on('levels')
-                ->onDelete('cascade');
-            $table->rememberToken();
+            $table->integer('level_id')->unsigned();
+
             $table->timestamps();
+
+//            $table->foreign('level_id')->references('id')->on('levels')
+//                ->onDelete('cascade');
         });
     }
 
