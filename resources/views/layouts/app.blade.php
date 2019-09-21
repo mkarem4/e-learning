@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('/website/vendors/owl-carousel/owl.carousel.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('/website/vendors/nice-select/css/nice-select.css') }}"/>
     {{--    <!-- main css -->--}}
-    <link rel="stylesheet" href="{{ asset('website/css/style.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('/website/css/style.css') }}"/>
 </head>
 <body>
 
@@ -71,18 +71,19 @@
                     class="collapse navbar-collapse offset"
                     id="navbarSupportedContent"
                 >
+
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item active">
+                        <li class="nav-item @if(Request::path() == '' || Request::path() == '/') active @endif">
                             <a class="nav-link" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item @if(Request::path() == 'about' ) active @endif">
                             <a class="nav-link" href="/about">About</a>
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item @if(Request::path() == 'courses' ) active @endif">
                             <a class="nav-link" href="/courses">Courses</a>
-                        </li
-                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item @if(Request::path() == 'contact' ) active @endif">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
                         <li class="nav-item">
@@ -109,7 +110,7 @@
 
         <div class="row footer-bottom d-flex justify-content-between">
             <p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-
+                Adaptive E-Learning System
             </p>
             <div class="col-lg-4 col-sm-12 footer-social">
                 <a href="#"><i class="ti-facebook"></i></a>

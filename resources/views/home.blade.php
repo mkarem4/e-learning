@@ -8,14 +8,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="banner_content text-center">
-                            <h1>Adaptive e learning system</h1>
+                            <h1>Adaptive E-Learning System</h1>
                             <hr>
                             <p class="text-uppercase">
                                 Best online education service In the world
                             </p>
-                            <h2 class="text-uppercase mt-4 mb-5">
-                                One Step Ahead This Season
-                            </h2>
+                            <h3 class="text-uppercase mt-4 mb-5">
+                                based on student test outcome in collaborative environment
+                            </h3>
                             <div>
                                 <a href="/courses" class="primary-btn ml-sm-3 ml-0">see course</a>
                             </div>

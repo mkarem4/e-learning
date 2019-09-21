@@ -28,24 +28,29 @@
             <div class="row h_blog_item">
                 <div class="col-lg-6">
                     <div class="h_blog_img">
-                        <img class="img-fluid" src="website/img/about.png" alt="" />
+                        <img class="img-fluid" src="website/img/about.png" alt=""/>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <div class="h_blog_text">
                         <div class="h_blog_text_inner left right">
-                            <h4>Welcome to our Institute</h4>
+                            <h4>AELS: Adaptive E-Learning System based on student test outcome in collaborative
+                                environment</h4>
                             <p>
-                                Subdue whales void god which living don't midst lesser
-                                yielding over lights whose. Cattle greater brought sixth fly
-                                den dry good tree isn't seed stars were.
+                                Internet applications and applications have expanded rapidly in recent years and have
+                                impacted our daily activities in terms of communication, information search and
+                                learning.
                             </p>
                             <p>
-                                Subdue whales void god which living don't midst lesser yieldi
-                                over lights whose. Cattle greater brought sixth fly den dry
-                                good tree isn't seed stars were the boring.
+                                The impact of Internet on the education has been the emergence of the term e-learning, a
+                                generic term covering a wide range of e-learning activities such as computers and mobile
+                                phones those connected to the internet.
                             </p>
-                            <a class="primary-btn" href="#">
+                            <p>
+                                E-learning has change the way of teaching students, unlike traditional eaching method,
+                                e-learning makes learning simpler, easier and more effective.
+                            </p>
+                            <a class="primary-btn" href="/courses">
                                 Learn More <i class="ti-arrow-right ml-1"></i>
                             </a>
                         </div>
