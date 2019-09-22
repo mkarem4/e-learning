@@ -22,3 +22,8 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 Route::resource('/courses', 'CourseController');
+
+Route::group(['prefix' => 'admincp'], function () {
+    Route::get('/dashboard', 'Admincp\HomeController@index');
+    Route::post('/logout', 'Admincp\AuthController@logout');
+});
