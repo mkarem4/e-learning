@@ -4542,11 +4542,12 @@ h6 {
 }
 
 .login-form{
-    padding-top: 145px;
+    padding-top: 150px;
+    padding-bottom: 62px;
 }
 
 .banner_area .banner_inner .overlay{
-    background: rgba(154, 162, 171, 0.62);
+    background: rgba(154, 162, 171, 0.62) !important;
 }
 /*---------------------------------------------------- */
 
