@@ -130,7 +130,7 @@
 <!--================ End Header Menu Area =================-->
 
 
-<main class="py-4">
+<main class="">
     @yield('content')
 </main>
 
