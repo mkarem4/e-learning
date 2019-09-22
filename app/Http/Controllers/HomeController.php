@@ -30,11 +30,6 @@ class HomeController extends Controller
     {
         return view('about');
     }
-
-    public function courses()
-    {
-        return view('courses');
-    }
     public function contact()
     {
         return view('contact');

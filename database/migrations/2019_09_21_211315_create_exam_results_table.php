@@ -26,7 +26,7 @@ class CreateExamResultsTable extends Migration
 //                ->onDelete('cascade');
 //            $table->foreign('question_id')->references('id')->on('questions')
 //                ->onDelete('cascade');
-//            $table->foreign('student_id')->references('id')->on('students')
+//            $table->foreign('user_id')->references('id')->on('users')
 //                ->onDelete('cascade');
         });
     }

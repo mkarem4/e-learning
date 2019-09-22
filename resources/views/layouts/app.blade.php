@@ -86,11 +86,41 @@
                         <li class="nav-item @if(Request::path() == 'contact' ) active @endif">
                             <a class="nav-link" href="/contact">Contact</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link search" id="search">
-                                <i class="ti-search"></i>
-                            </a>
-                        </li>
+                        @if (Auth::guest())
+                            <li class="nav-item">
+                                <a href="{{ route('login') }}" class="nav-link" id="login">
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('register') }}" class="nav-link search" id="register">
+                                    Register
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a href="#" class="nav-link search" id="register">
+                                    <i class="ti-user"></i> {{ auth()->user()->name }}
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="{{ route('logout') }}" class="nav-link"
+                                   onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+                            </li>
+
+                            <li class="hidden-item">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        @endif
+
+
                     </ul>
                 </div>
             </div>
