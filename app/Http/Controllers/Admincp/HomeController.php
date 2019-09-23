@@ -20,7 +20,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home.dashboard');
+        $active = 'dashboard';
+        return view('admin.home.dashboard',compact('active'));
     }
 
 

@@ -18,7 +18,8 @@ class AdminController extends Controller
     public function index()
     {
         $admins = User::where('type',1)->get();
-        return view('admin.admins.index',compact('admins'));
+        $active = 'admins';
+        return view('admin.admins.index',compact('admins','active'));
     }
 
     /**
