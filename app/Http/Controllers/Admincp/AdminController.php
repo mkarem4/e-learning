@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admincp;
 
 use App\Http\Controllers\Controller;
-use App\Models\Language;
+use App\User;
 use Illuminate\Http\Request;
 
 
@@ -17,7 +17,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.admins.index');
+        $admins = User::where('type',1)->get();
+        return view('admin.admins.index',compact('admins'));
     }
 
     /**
