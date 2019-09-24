@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard - Admins</h1>
+                    <h1 class="m-0 text-dark">Dashboard - Courses</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admincp/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Admins</li>
+                        <li class="breadcrumb-item active">Courses</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,7 +22,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Admins</h3>
+                        <h3 class="card-title">Courses</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -36,16 +36,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($admins as $admin)
-                                <tr><a href="#">
-                                        <td>{{ $admin->name }}</td>
-                                        <td>{{ $admin->email }}
-                                        </td>
-                                        <td>{{ $admin->created_at }}</td>
-                                        <td> ###</td>
-                                    </a>
-                                </tr>
-                            @endforeach
+{{--                            @foreach($admins as $admin)--}}
+{{--                                <tr><a href="#">--}}
+{{--                                        <td>{{ $admin->name }}</td>--}}
+{{--                                        <td>{{ $admin->email }}--}}
+{{--                                        </td>--}}
+{{--                                        <td>{{ $admin->created_at }}</td>--}}
+{{--                                        <td> ###</td>--}}
+{{--                                    </a>--}}
+{{--                                </tr>--}}
+{{--                            @endforeach--}}
 
 
                             </tbody>
