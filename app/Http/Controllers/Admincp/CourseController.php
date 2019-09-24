@@ -23,11 +23,11 @@ class CourseController extends Controller
     public function create()
     {
         return view("courses.new");
-        echo "hi marwa";
+        // echo "hi marwa";
     }
     public function store(Request $request)
     {
-        dd(User::all());  
+         
         $this->validate($request, [
         'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -42,6 +42,7 @@ class CourseController extends Controller
             $course->cover = 'covers/'. $fileName ;
         }
         $course->save() ;
+        dd(User::all()); 
         return redirect()->route('courses.index');
     }
     public function show($id)
