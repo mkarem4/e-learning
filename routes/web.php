@@ -30,5 +30,6 @@ Route::group(['prefix' => 'admincp', 'middleware' => 'auth','admin'], function (
     Route::resource('/instructors', 'Admincp\InstructorController');
     Route::resource('/students', 'Admincp\StudentController');
     Route::resource('/courses', 'Admincp\CourseController');
+    Route::resource('/levels', 'Admincp\LevelController');
 
 });

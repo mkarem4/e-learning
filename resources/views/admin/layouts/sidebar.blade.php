@@ -37,7 +37,7 @@
                 </li>
                 @if(auth()->user()->type == 1)
                     <li class="nav-item has-treeview {{ $active == 'admins' ? 'menu-open': '' }}">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
                                 Admins
@@ -64,7 +64,7 @@
                     </li>
                 @endif
                 <li class="nav-item has-treeview {{ $active == 'instructors' || $active == 'students' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Users
@@ -104,7 +104,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ $active == 'courses' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Courses
@@ -129,7 +129,7 @@
                     </ul>
                 </li>
                 <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
                         <i class="nav-icon fas fa-level-up-alt"></i>
                         <p>
                             Levels
