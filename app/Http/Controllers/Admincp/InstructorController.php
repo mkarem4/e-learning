@@ -7,7 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 
 
-class AdminController extends Controller
+class InstructorController extends Controller
 {
 
     /**
@@ -17,9 +17,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = User::where('type', 1)->get();
-        $active = 'admins';
-        return view('admin.admins.index', compact('admins', 'active'));
+        $instructors = User::where('type', 2)->get();
+        $active = 'instructors';
+        return view('admin.instructors.index', compact('instructors', 'active'));
     }
 
     /**
@@ -29,8 +29,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $active = 'admins';
-        return view('admin.admins.create', compact('active'));
+        $active = 'instructors';
+        return view('admin.instructors.create', compact('active'));
     }
 
     /**
@@ -51,11 +51,11 @@ class AdminController extends Controller
         $user->name = request('name');
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
-        $user->type = 1;
+        $user->type = 2;
         $user->level_id = 0;
         $user->save();
 
-        return redirect('/admincp/admins')->with('success', 'Admin added successfully .');
+        return redirect('/admincp/admins')->with('success', 'Instructor added successfully .');
     }
 
     /**

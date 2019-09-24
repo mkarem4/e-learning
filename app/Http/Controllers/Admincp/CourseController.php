@@ -22,7 +22,6 @@ class CourseController extends Controller
     }
     public function store(Request $request)
     {
-        dd(User::all());
         $this->validate($request, [
         'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

@@ -93,16 +93,25 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('register') }}" class="nav-link search" id="register">
+                                <a href="{{ route('register') }}" class="nav-link" id="register">
                                     Register
                                 </a>
                             </li>
                         @else
                             <li class="nav-item">
-                                <a href="#" class="nav-link search" id="register">
+                                <a href="#" class="nav-link" id="profile_name">
                                     <i class="ti-user"></i> {{ auth()->user()->name }}
                                 </a>
                             </li>
+
+                            @if(auth()->user()->type != 3)
+                                <li class="nav-item">
+                                    <a href="/admincp/dashboard" class="nav-link" id="register">
+                                        <i class="ti-dashboard"></i> DashBoard
+                                    </a>
+                                </li>
+                            @endif
+
 
                             <li class="nav-item">
                                 <a href="{{ route('logout') }}" class="nav-link"

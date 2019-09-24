@@ -24,9 +24,11 @@ Route::get('/contact', 'HomeController@contact');
 Route::resource('courses', 'CourseController');
 
 // dashboard
-Route::group(['prefix' => 'admincp', 'middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admincp', 'middleware' => 'auth','admin'], function () {
     Route::get('/dashboard', 'Admincp\HomeController@index');
     Route::resource('/admins', 'Admincp\AdminController');
+    Route::resource('/instructors', 'Admincp\InstructorController');
+    Route::resource('/students', 'Admincp\StudentController');
     Route::get('/courses', 'Admincp\CourseController@index')->name('index');
     Route::get('/courses/create', 'Admincp\CourseController@create')->name('create');
     Route::post('/courses/store', 'Admincp\CourseController@store')->name('store');
