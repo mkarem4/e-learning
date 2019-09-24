@@ -39,9 +39,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function courses()
+    public function course()
     {
-        return $this->belongsToMany(Course::class);
+        return $this->hasMany(Course::class);
     }
 
     public function level()

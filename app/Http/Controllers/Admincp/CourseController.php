@@ -18,7 +18,7 @@ class CourseController extends Controller
     public function create()
     {
         $active = 'courses';
-        return view('admin.courses.new',compact('active'));
+        return view('admin.courses.create',compact('active'));
     }
     public function store(Request $request)
     {
@@ -31,7 +31,7 @@ class CourseController extends Controller
          if($file = $request->hasFile('cover')) {
             $file = $request->file('cover') ;
             $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/covers/' ;
+            $destinationPath = public_path().'/uploads/courses/cover/' ;
             $file->move($destinationPath,$fileName);
             $course->cover = 'covers/'. $fileName ;
         }
