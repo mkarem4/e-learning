@@ -6,28 +6,23 @@ use App\Models\Course;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\URL;
 
 class CourseController extends Controller
 {
-  
-    public function __construtor(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $courses = Course::all();
-        return view('courses.index')->with("courses",$courses);
+        $active = 'courses';
+        return view('admin.courses.index',compact('courses','active'));
     }
     public function create()
     {
-        return view("courses.new");
-        echo "hi marwa";
+        $active = 'courses';
+        return view('admin.courses.new',compact('active'));
     }
     public function store(Request $request)
     {
-        dd(User::all());  
+        dd(User::all());
         $this->validate($request, [
         'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);

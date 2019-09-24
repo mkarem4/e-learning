@@ -55,7 +55,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ $active == 'courses' ? 'menu-open': '' }}" >
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             Courses
                             <i class="fas fa-angle-left right"></i>
@@ -66,6 +66,13 @@
                             <a href="/admincp/courses" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Courses</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admincp/courses/create" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Course</p>
                             </a>
                         </li>
                     </ul>
