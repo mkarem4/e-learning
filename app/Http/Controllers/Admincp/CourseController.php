@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\Course;
+namespace App\Http\Controllers\Admincp;
+use App\Http\Controllers\Controller;
+use App\Models\Course;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
@@ -16,38 +17,38 @@ class CourseController extends Controller
 
     public function index()
     {
-        $courses = Article::all();
-        return view('courses')->with("courses",$courses);
+        $courses = Course::all();
+        return view('courses.index')->with("courses",$courses);
     }
     public function create()
     {
-        // return view("new");
+        return view("courses.new");
         echo "hi marwa";
     }
-    // public function store(Request $request)
-    // {
-       
-    //     $this->validate($request, [
-    //     'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //     ]);
-    //     $auth_user = ["user_id"=>Auth::id()];
-    //     $course = new Course($request->all()+$auth_user) ;
+    public function store(Request $request)
+    {
+        dd(User::all());  
+        $this->validate($request, [
+        'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $auth_user = ["user_id"=>Auth::id()];
+        $course = new Course($request->all()+$auth_user) ;
 
-    //      if($file = $request->hasFile('cover')) {
-    //         $file = $request->file('cover') ;
-    //         $fileName = $file->getClientOriginalName() ;
-    //         $destinationPath = public_path().'/covers/' ;
-    //         $file->move($destinationPath,$fileName);
-    //         $course->cover = 'covers/'. $fileName ;
-    //     }
-    //     $course->save() ;
-    //     return redirect()->route('index');
-    // }
-    // public function show($id)
-    // {
-    //     $course = Course::findOrFail($id);
-    //     return view('show')->with("course",$course);
-    // }
+         if($file = $request->hasFile('cover')) {
+            $file = $request->file('cover') ;
+            $fileName = $file->getClientOriginalName() ;
+            $destinationPath = public_path().'/covers/' ;
+            $file->move($destinationPath,$fileName);
+            $course->cover = 'covers/'. $fileName ;
+        }
+        $course->save() ;
+        return redirect()->route('courses.index');
+    }
+    public function show($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('show')->with("course",$course);
+    }
 
     // public function edit($id)
     // {
