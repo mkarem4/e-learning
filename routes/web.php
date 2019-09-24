@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
+Route::get('/courses/create', 'CourseController@create')->name('create');
 
 Route::resource('/courses', 'CourseController');
 
