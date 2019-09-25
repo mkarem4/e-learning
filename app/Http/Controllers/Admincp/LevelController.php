@@ -54,10 +54,10 @@ class LevelController extends Controller
 
     public function destroy($id)
     {
-        $active = 'levels';
+        
         $level = Level::findOrFail($id);
         $level->delete();
-        return redirect('admin.levels.index',compact('active'))->with("message", "Delete Success");
+        return redirect('/admincp/levels')->with("message", "Delete Success");
     }
 
 }

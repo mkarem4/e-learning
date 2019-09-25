@@ -40,10 +40,13 @@
                                         <td><a href="/admincp/levels/{{$level->id}}/edit "  class="btn btn-primary">Edit</a></td>
                                         
                                     </a>
-                                    <form method="DELETE" action="{{ route('levels.destroy',$level->id) }}"> 
-                                     @method('DELETE')
-                                    <td><button type="submit"  class="btn btn-danger">Delete</button></td>
+                                    <td>
+                                    <form action="{{ route('levels.destroy',$level->id) }}" method="POST">
+                                    {{method_field('DELETE')}}
+                                        @csrf
+                                    <input type="submit" class="btn btn-danger" value="Delete"/>
                                     </form>
+                                    </td>
                                 </tr>
                             @endforeach
 
