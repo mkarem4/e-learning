@@ -62,12 +62,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="type" name="type">
-                                    <option value="2">Instructor</option>
-                                    <option value="3">Student</option>
+                                    <option value="2" class="form-control">Instructor</option>
+                                    <option value="3" class="form-control">Student</option>
                                 </select>
                                 @error('type')
                                 <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
 
 
                         <div class="form-group row">
-                            <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
+                            <label for="level_id" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="level_id" name="level_id">

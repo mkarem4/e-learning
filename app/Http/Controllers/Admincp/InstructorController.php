@@ -47,6 +47,7 @@ class InstructorController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
+            'level_id' => 'required',
         ]);
 
         $user = new User;
@@ -57,7 +58,7 @@ class InstructorController extends Controller
         $user->level_id = request('level_id');
         $user->save();
 
-        return redirect('/admincp/admins')->with('success', 'Instructor added successfully .');
+        return redirect('/admincp/instructors')->with('success', 'Instructor added successfully .');
     }
 
     /**

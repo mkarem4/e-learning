@@ -41,9 +41,8 @@
                             @foreach($students as $student)
                                 <tr><a href="#">
                                         <td>{{ $student->name }}</td>
-                                        <td>{{ $student->email }}
-                                        </td>
-                                        <td>{{ $student->level }}</td>
+                                        <td>{{ $student->email }}</td>
+                                        <td>{{ $student->level->name }}</td>
                                         <td>
                                             <a  class="btn btn-danger" onclick="return false;" object_id="{{ $student->id }}"
                                                delete_url="/admin/students/{{ $student->id }}" href="#">

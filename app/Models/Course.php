@@ -23,4 +23,9 @@ class Course extends Model
     {
         return $this->belongsTo(Level::class);
     }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
+    }
 }

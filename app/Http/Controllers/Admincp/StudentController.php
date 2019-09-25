@@ -46,6 +46,7 @@ class StudentController extends Controller
             'name' => 'required|min:3',
             'email' => 'required|email|unique:users',
             'password' => 'required|confirmed|min:6',
+            'level_id' => 'required',
         ]);
 
         $user = new User;
@@ -56,7 +57,7 @@ class StudentController extends Controller
         $user->level_id = request('level_id');
         $user->save();
 
-        return redirect('/admincp/admins')->with('success', 'Admin added successfully .');
+        return redirect('/admincp/students')->with('success', 'Student added successfully .');
     }
 
     /**

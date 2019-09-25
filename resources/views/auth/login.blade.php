@@ -1,6 +1,7 @@
 @extends('layouts.app')
-
 @section('content')
+
+    @include('admin.layouts.message')
 <div class="container">
     <div class="row justify-content-center login-form">
         <div class="col-md-8">

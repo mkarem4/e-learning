@@ -27,7 +27,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" method="post" action="/admincp/admins">
+                    <form role="form" method="post" action="/admincp/students">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
@@ -57,7 +57,7 @@
                                 <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="level_id">
                                     <option selected="selected" data-select2-id="3">Select Level</option>
                                     @foreach($levels as $level)
-                                        <option value="{{$level->id}}" >{{$level->name}}</option>
+                                        <option value="{{$level->id}}">{{$level->name}}</option>
                                     @endforeach
                                 </select>
                             </div>

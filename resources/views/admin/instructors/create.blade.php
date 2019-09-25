@@ -27,7 +27,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- form start -->
-                    <form role="form" method="post" action="/admincp/admins">
+                    <form role="form" method="post" action="/admincp/instructors">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
