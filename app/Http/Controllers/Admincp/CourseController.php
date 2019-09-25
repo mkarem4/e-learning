@@ -51,22 +51,25 @@ class CourseController extends Controller
 
     public function edit($id)
     {
+        $active = 'courses';
         $course = Course::findOrFail($id);
-        return view('edit')->with("course",$course);
+        $levels=Level::all();
+        return view('admin.courses.edit',compact('active'),compact('course'),compact('levels'));
     }
 
 
-    // public function update(Request $request, $id)
-    // {
-    //     $course = Course::find($id)->update($request->all());
-    //     return redirect()->route('show', $id)->with("message", "Updated Success");
-    // }
+    public function update(Request $request, $id)
+    {
+        $course = Course::find($id)->update($request->all());
+        return redirect('/admincp/courses')->with("message", "Updated Success");
+    }
 
 
-    // public function destroy($id)
-    // {
-    //     $course = Course::findOrFail($id);
-    //     $course->delete();
-    //     return redirect()->route('index')->with("message", "Delete Success");
-    // }
+    public function destroy($id)
+    {
+        
+        $course = Course::findOrFail($id);
+        $course->delete();
+        return redirect('/admincp/courses')->with("message", "Delete Success");
+    }
 }

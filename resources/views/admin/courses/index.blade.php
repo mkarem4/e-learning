@@ -43,9 +43,15 @@
                                         <td>{{ $course->description }}</td>
                                         <td>{{ $course->instructor->name }}</td>
                                         <td>{{ $course->level->name }}</td>
-                                        <td><a href="/admincp/courses"  class="btn btn-primary">Edit</a>
-                                        <a href="/admincp/courses"  class="btn btn-danger">Delete</a></td>
+                                        <td><a href="/admincp/courses/{{$course->id}}/edit "  class="btn btn-primary">Edit</a></td>
                                     </a>
+                                    <td>
+                                    <form action="{{ route('courses.destroy',$course->id) }}" method="POST">
+                                    {{method_field('DELETE')}}
+                                        @csrf
+                                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                                    </form>
+                                    </td>
                                 </tr>
                             @endforeach
 
