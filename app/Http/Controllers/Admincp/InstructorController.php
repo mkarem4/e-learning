@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admincp;
 
 use App\Http\Controllers\Controller;
+use App\Models\Level;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -29,8 +30,9 @@ class InstructorController extends Controller
      */
     public function create()
     {
+        $levels = Level::all();
         $active = 'instructors';
-        return view('admin.instructors.create', compact('active'));
+        return view('admin.instructors.create', compact('active', 'levels'));
     }
 
     /**
@@ -52,7 +54,7 @@ class InstructorController extends Controller
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
         $user->type = 2;
-        $user->level_id = 0;
+        $user->level_id = request('level_id');
         $user->save();
 
         return redirect('/admincp/admins')->with('success', 'Instructor added successfully .');

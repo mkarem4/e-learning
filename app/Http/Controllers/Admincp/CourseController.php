@@ -17,7 +17,6 @@ class CourseController extends Controller
     public function create()
     {
         $levels=Level::all();
-        // dd($level);
         $active = 'courses';
         return view('admin.courses.create',compact('active'),compact('levels'));
     }

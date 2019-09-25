@@ -44,14 +44,10 @@
                                         <td>{{ $student->email }}
                                         </td>
                                         <td>{{ $student->level }}</td>
-                                        <td class="text-center">
-                                            <ul>
-                                                <li>
-                                                    <a onclick="return false;" object_id="{{ $student->id }}"
-                                                       delete_url="/admin/students/{{ $student->id }}" href="#">
-                                                        <i class="ti-trash"></i></a>
-                                                </li>
-                                            </ul>
+                                        <td>
+                                            <a  class="btn btn-danger" onclick="return false;" object_id="{{ $student->id }}"
+                                               delete_url="/admin/students/{{ $student->id }}" href="#">
+                                                <i class="ti-trash"></i>Delete</a>
                                         </td>
                                     </a>
                                 </tr>

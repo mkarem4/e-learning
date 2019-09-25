@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admincp;
 
 use App\Http\Controllers\Controller;
+use App\Models\Level;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -28,8 +29,9 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $levels = Level::all();
         $active = 'students';
-        return view('admin.students.create', compact('active'));
+        return view('admin.students.create', compact('active','levels'));
     }
 
     /**
@@ -51,7 +53,7 @@ class StudentController extends Controller
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
         $user->type = 3;
-        $user->level_id = request('level_id');;
+        $user->level_id = request('level_id');
         $user->save();
 
         return redirect('/admincp/admins')->with('success', 'Admin added successfully .');
