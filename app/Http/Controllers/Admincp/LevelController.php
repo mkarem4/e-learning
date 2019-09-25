@@ -32,5 +32,32 @@ class LevelController extends Controller
 
         return redirect('/admincp/levels')->with('success', 'level added successfully .');
     }
+    public function show($id)
+    {
+        $level = Level::findOrFail($id);
+        return view('admin.levels.show')->with("level",$level);
+    }
+
+    public function edit($id)
+    {
+        $level = Level::findOrFail($id);
+        $active = 'levels';
+        return view('admin.levels.edit',compact('active'),compact('level'));
+    }
+
+       public function update(Request $request, $id)
+    {
+        $level = Level::find($id)->update($request->all());
+        return redirect('/admincp/levels')->with("message", "Updated Success");
+    }
+
+
+    public function destroy($id)
+    {
+        $active = 'levels';
+        $level = Level::findOrFail($id);
+        $level->delete();
+        return redirect('admin.levels.index',compact('active'))->with("message", "Delete Success");
+    }
 
 }

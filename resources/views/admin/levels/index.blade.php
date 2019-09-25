@@ -35,11 +35,15 @@
                             <tbody>
                             @foreach($levels as $level)
                                 <tr><a href="#">
+
                                         <td>{{ $level->name }}</td>
-                                        <td><a href="/admincp/levels"  class="btn btn-primary">Edit</a></td>
-                                        <td><a href="/admincp/levels"  class="btn btn-danger">Delete</a></td>
-                                      
+                                        <td><a href="/admincp/levels/{{$level->id}}/edit "  class="btn btn-primary">Edit</a></td>
+                                        
                                     </a>
+                                    <form method="DELETE" action="{{ route('levels.destroy',$level->id) }}"> 
+                                     @method('DELETE')
+                                    <td><button type="submit"  class="btn btn-danger">Delete</button></td>
+                                    </form>
                                 </tr>
                             @endforeach
 

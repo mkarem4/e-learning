@@ -34,8 +34,8 @@ class CourseController extends Controller
         $course = new Course;
         $course->name = request('name');
         $course->description = request('description');
-        $user->cover = request('cover');
-        $user->level_id = request('level_id');
+        $course->cover = $request->file('cover');
+        $course->level_id = request('level_id');
         $course->save();
 
         return redirect('/admincp/courses')->with('success', 'Course added successfully .');
@@ -43,14 +43,14 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::findOrFail($id);
-        return view('show')->with("course",$course);
+        return view('admin.courses.show')->with("course",$course);
     }
 
-    // public function edit($id)
-    // {
-    //     $course = Course::findOrFail($id);
-    //     return view('edit')->with("course",$course);
-    // }
+    public function edit($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('edit')->with("course",$course);
+    }
 
 
     // public function update(Request $request, $id)
