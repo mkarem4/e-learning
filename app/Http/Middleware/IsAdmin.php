@@ -21,7 +21,7 @@ class IsAdmin
         }
 
         if (Auth::check() && Auth::user()->type == 3) {
-            abort(404);
+            return redirect('/login')->with('error','You do not have access to this page');
         }
         return $next($request);
     }

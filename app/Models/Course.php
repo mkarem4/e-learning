@@ -16,11 +16,16 @@ class Course extends Model
 
     public function instructor()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function level()
     {
         return $this->belongsTo(Level::class);
+    }
+
+    public function materials()
+    {
+        return $this->hasMany(Material::class);
     }
 }

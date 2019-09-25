@@ -33,6 +33,7 @@
                                 <th>Description</th>
                                 <th>Instructor</th>
                                 <th>Level</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,10 +41,10 @@
                                 <tr><a href="#">
                                         <td>{{ $course->name }}</td>
                                         <td>{{ $course->description }}</td>
-                                        <td>{{ $course->instructor()->name }}</td>
-                                        <td>{{ $course->level()->name }}</td>
-                                        <td><a href="/admincp/courses"  class="btn btn-primary">Edit</a></td>
-                                        <td><a href="/admincp/courses"  class="btn btn-danger">Delete</a></td>
+                                        <td>{{ $course->instructor->name }}</td>
+                                        <td>{{ $course->level->name }}</td>
+                                        <td><a href="/admincp/courses"  class="btn btn-primary">Edit</a>
+                                        <a href="/admincp/courses"  class="btn btn-danger">Delete</a></td>
                                     </a>
                                 </tr>
                             @endforeach

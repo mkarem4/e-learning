@@ -11,20 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 Route::resource('courses', 'CourseController');
 
 // dashboard
-Route::group(['prefix' => 'admincp', 'middleware' => 'auth','admin'], function () {
+Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', 'Admincp\HomeController@index');
     Route::resource('/admins', 'Admincp\AdminController');
     Route::resource('/instructors', 'Admincp\InstructorController');

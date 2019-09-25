@@ -33,7 +33,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Created At</th>
+                                <th>Level</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -41,17 +41,12 @@
                             @foreach($instructors as $instructor)
                                 <tr><a href="#">
                                         <td>{{ $instructor->name }}</td>
-                                        <td>{{ $instructor->email }}
-                                        </td>
-                                        <td>{{ $instructor->created_at }}</td>
-                                        <td class="text-center">
-                                            <ul>
-                                                <li>
-                                                    <a onclick="return false;" object_id="{{ $instructor->id }}"
-                                                       delete_url="/admin/instructors/{{ $instructor->id }}" href="#">
-                                                        <i class="ti-trash"></i></a>
-                                                </li>
-                                            </ul>
+                                        <td>{{ $instructor->email }}</td>
+                                        <td>{{ $instructor->level->name }}</td>
+                                        <td>
+                                            <a  class="btn btn-danger" onclick="return false;" object_id="{{ $instructor->id }}"
+                                               delete_url="/admin/instructors/{{ $instructor->id }}" href="#">
+                                                <i class="ti-trash"></i>Delete</a>
                                         </td>
                                     </a>
                                 </tr>

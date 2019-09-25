@@ -47,9 +47,9 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
+                                <label for="exampleInputPassword1">Password Confirmation</label>
                                 <input type="password" class="form-control" id="exampleInputPassword1" name="password_confirmation"
-                                       placeholder="Password">
+                                       placeholder="Password Confirmation">
                             </div>
                         </div>
                         <!-- /.card-body -->

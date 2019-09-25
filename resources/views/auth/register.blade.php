@@ -62,12 +62,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
+                            <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('User Type') }}</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="type" name="type">
-                                    <option value="2">Instructor</option>
-                                    <option value="3">Student</option>
+                                    <option value="2" class="form-control">Instructor</option>
+                                    <option value="3" class="form-control">Student</option>
                                 </select>
                                 @error('type')
                                 <span class="invalid-feedback" role="alert">
@@ -79,18 +79,14 @@
 
 
                         <div class="form-group row">
-                            <label for="text" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
+                            <label for="level_id" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
 
                             <div class="col-md-6">
                                 <select class="form-control" id="level_id" name="level_id">
-                                    <option value="0">Select Student Level</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
+                                    <option value="0">Select Level</option>
+                                    @foreach($levels as $level)
+                                        <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                    @endforeach
                                 </select>
                                 @error('level_id')
                                 <span class="invalid-feedback" role="alert">

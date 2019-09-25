@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Admincp;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Level;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
@@ -19,7 +17,6 @@ class CourseController extends Controller
     public function create()
     {
         $levels=Level::all();
-        // dd($level);
         $active = 'courses';
         return view('admin.courses.create',compact('active'),compact('levels'));
     }
@@ -31,15 +28,21 @@ class CourseController extends Controller
             'cover' =>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'level_id' =>'required'
         ]);
+
+        $imageName = time() . '.' . request()->cover->getClientOriginalExtension();
+        request()->cover->move(public_path('uploads/courses'), $imageName);
+
         $course = new Course;
         $course->name = request('name');
         $course->description = request('description');
-        $course->cover = $request->file('cover');
+        $course->cover = $imageName;
         $course->level_id = request('level_id');
+        $course->user_id = auth()->id();
         $course->save();
 
         return redirect('/admincp/courses')->with('success', 'Course added successfully .');
     }
+
     public function show($id)
     {
         $course = Course::findOrFail($id);

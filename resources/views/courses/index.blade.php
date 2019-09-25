@@ -39,55 +39,30 @@
                 <!-- single course -->
                 <div class="col-lg-12">
                     <div class="owl-carousel active_course">
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="website/img/courses/c1.jpg" alt=""/>
+                        @foreach($courses as $course)
+                            <div class="single_course">
+                                <div class="course_head">
+                                    <a href="/courses/{{$course->id}}"><img class="img-fluid"
+                                                                            src="/uploads/courses/{{ $course->cover }}"
+                                                                            alt=""/></a>
+                                </div>
+                                <div class="course_content">
+                                    <h4 class="mb-3">
+                                        <a href="/courses/{{$course->id}}">{{ $course->name }}</a>
+                                    </h4>
+                                    <h6 class="mb-3">
+                                        {{ $course->level->name }}
+                                    </h6>
+                                    <p>
+                                        {{ $course->description }}
+                                    </p>
+
+                                    <h3>
+                                        Dr: {{ $course->instructor->name }}
+                                    </h3>
+                                </div>
                             </div>
-                            <div class="course_content">
-
-                                <h4 class="mb-3">
-                                    <a href="course-details.html">Digital Images </a>
-                                </h4>
-                                <p>
-                                    It's one from interesting and useful courses that helps you to develop yourself to
-                                    be very good and have experience
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="website/img/courses/c2.jpg" alt=""/>
-                            </div>
-                            <div class="course_content">
-                                <h4 class="mb-3">
-                                    <a href="course-details.html">Computer Security</a>
-                                </h4>
-                                <p>
-                                    It's one from interesting and useful courses that helps you to develop yourself to
-                                    be very good and have experience
-
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="single_course">
-                            <div class="course_head">
-                                <img class="img-fluid" src="website/img/courses/c3.jpg" alt=""/>
-                            </div>
-                            <div class="course_content">
-                                <h4 class="mb-3">
-                                    <a href="course-details.html">Computer Engineering</a>
-                                </h4>
-                                <p>
-                                    It's one from interesting and useful courses that helps you to develop yourself to
-                                    be very good and have experience
-                                </p>
-
-
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
