@@ -30,22 +30,23 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Created At</th>
-                                <th>Action</th>
+                                <th>Description</th>
+                                <th>Instructor</th>
+                                <th>Level</th>
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @foreach($admins as $admin)--}}
-{{--                                <tr><a href="#">--}}
-{{--                                        <td>{{ $admin->name }}</td>--}}
-{{--                                        <td>{{ $admin->email }}--}}
-{{--                                        </td>--}}
-{{--                                        <td>{{ $admin->created_at }}</td>--}}
-{{--                                        <td> ###</td>--}}
-{{--                                    </a>--}}
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                            @foreach($courses as $course)
+                                <tr><a href="#">
+                                        <td>{{ $course->name }}</td>
+                                        <td>{{ $course->description }}</td>
+                                        <td>{{ $course->instructor()->name }}</td>
+                                        <td>{{ $course->level()->name }}</td>
+                                        <td><a href="/admincp/courses"  class="btn btn-primary">Edit</a></td>
+                                        <td><a href="/admincp/courses"  class="btn btn-danger">Delete</a></td>
+                                    </a>
+                                </tr>
+                            @endforeach
 
 
                             </tbody>

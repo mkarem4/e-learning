@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard - Admins</h1>
+                    <h1 class="m-0 text-dark">Dashboard - Students</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admincp/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Admins</li>
+                        <li class="breadcrumb-item active">Students</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Admins</h3>
+                        <h3 class="card-title">Students</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -33,22 +33,22 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Created At</th>
+                                <th>Level</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($admins as $admin)
+                            @foreach($students as $student)
                                 <tr><a href="#">
-                                        <td>{{ $admin->name }}</td>
-                                        <td>{{ $admin->email }}
+                                        <td>{{ $student->name }}</td>
+                                        <td>{{ $student->email }}
                                         </td>
-                                        <td>{{ $admin->created_at }}</td>
+                                        <td>{{ $student->level }}</td>
                                         <td class="text-center">
                                             <ul>
                                                 <li>
-                                                    <a onclick="return false;" object_id="{{ $admin->id }}"
-                                                       delete_url="/admin/admin/{{ $admin->id }}" href="#">
+                                                    <a onclick="return false;" object_id="{{ $student->id }}"
+                                                       delete_url="/admin/students/{{ $student->id }}" href="#">
                                                         <i class="ti-trash"></i></a>
                                                 </li>
                                             </ul>

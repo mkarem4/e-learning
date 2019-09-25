@@ -7,9 +7,8 @@ use App\User;
 use Illuminate\Http\Request;
 
 
-class AdminController extends Controller
+class StudentController extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -17,9 +16,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $admins = User::where('type', 1)->get();
-        $active = 'admins';
-        return view('admin.admins.index', compact('admins', 'active'));
+        $students = User::where('type', 3)->get();
+        $active = 'students';
+        return view('admin.students.index', compact('students', 'active'));
     }
 
     /**
@@ -29,8 +28,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $active = 'admins';
-        return view('admin.admins.create', compact('active'));
+        $active = 'students';
+        return view('admin.students.create', compact('active'));
     }
 
     /**
@@ -51,8 +50,8 @@ class AdminController extends Controller
         $user->name = request('name');
         $user->email = request('email');
         $user->password = bcrypt(request('password'));
-        $user->type = 1;
-        $user->level_id = 0;
+        $user->type = 3;
+        $user->level_id = request('level_id');;
         $user->save();
 
         return redirect('/admincp/admins')->with('success', 'Admin added successfully .');

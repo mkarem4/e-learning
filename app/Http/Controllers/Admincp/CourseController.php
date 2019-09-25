@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admincp;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
+use App\Models\Level;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,27 +18,27 @@ class CourseController extends Controller
     }
     public function create()
     {
+        $levels=Level::all();
+        // dd($level);
         $active = 'courses';
-        return view('admin.courses.new',compact('active'));
+        return view('admin.courses.create',compact('active'),compact('levels'));
     }
     public function store(Request $request)
     {
-        // dd(User::all());
         $this->validate($request, [
-        'cover' => 'required|cover|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'name' => 'required|min:3',
+            'description' =>'required',
+            'cover' =>'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'level_id' =>'required'
         ]);
-        $auth_user = ["user_id"=>Auth::id()];
-        $course = new Course($request->all()+$auth_user) ;
+        $course = new Course;
+        $course->name = request('name');
+        $course->description = request('description');
+        $user->cover = request('cover');
+        $user->level_id = request('level_id');
+        $course->save();
 
-         if($file = $request->hasFile('cover')) {
-            $file = $request->file('cover') ;
-            $fileName = $file->getClientOriginalName() ;
-            $destinationPath = public_path().'/covers/' ;
-            $file->move($destinationPath,$fileName);
-            $course->cover = 'covers/'. $fileName ;
-        }
-        $course->save() ;
-        return redirect()->route('courses.index');
+        return redirect('/admincp/courses')->with('success', 'Course added successfully .');
     }
     public function show($id)
     {

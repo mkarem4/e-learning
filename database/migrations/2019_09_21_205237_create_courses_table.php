@@ -18,7 +18,9 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('cover');
+            $table->integer('user_id')->unsigned();
             $table->integer('level_id')->unsigned();
+
             $table->timestamps();
 
 //            $table->foreign('level_id')

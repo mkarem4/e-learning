@@ -35,26 +35,76 @@
                         </p>
                     </a>
                 </li>
+                @if(auth()->user()->type == 1)
+                    <li class="nav-item has-treeview {{ $active == 'admins' ? 'menu-open': '' }}">
+                        <a href="#" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>
+                                Admins
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/admincp/admins" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Admins</p>
+                                </a>
+                            </li>
 
-                <li class="nav-item has-treeview {{ $active == 'admins' ? 'menu-open': '' }}" >
-                    <a href="#" class="nav-link">
+                            <li class="nav-item">
+                                <a href="/admincp/admins/create" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Admin</p>
+                                </a>
+                            </li>
+                        </ul>
+
+
+                    </li>
+                @endif
+                <li class="nav-item has-treeview {{ $active == 'instructors' || $active == 'students' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            Admins
+                            Users
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admincp/admins" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
+                            <a href="/admincp/instructors"
+                               class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Admins</p>
+                                <p>Instructors</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admincp/instructors/create" class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Instructor</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="/admincp/students" class="nav-link {{ $active == 'students' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Students</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admincp/students/create" class="nav-link {{ $active == 'students' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Student</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ $active == 'courses' ? 'menu-open': '' }}" >
-                    <a href="#" class="nav-link">
+                <li class="nav-item has-treeview {{ $active == 'courses' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Courses
@@ -70,16 +120,17 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admincp/courses/create" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
+                            <a href="/admincp/courses/create"
+                               class="nav-link {{ $active == 'courses' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Course</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}" >
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
+                <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                        <i class="nav-icon fas fa-book"></i>
                         <p>
                             Levels
                             <i class="fas fa-angle-left right"></i>
@@ -92,32 +143,17 @@
                                 <p>Levels</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item has-treeview {{ $active == 'instructors' || $active == 'students' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Users
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admincp/instructors" class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Instructors</p>
-                            </a>
-                        </li>
 
                         <li class="nav-item">
-                            <a href="/admincp/students" class="nav-link {{ $active == 'students' ? 'active': '' }}">
+                            <a href="/admincp/levels/create"
+                               class="nav-link {{ $active == 'levels' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Students</p>
+                                <p>Add New Level</p>
                             </a>
                         </li>
                     </ul>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
