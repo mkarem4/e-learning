@@ -130,7 +130,7 @@
                 </li>
                 <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}">
                     <a href="#" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
-                        <i class="nav-icon fas fa-book"></i>
+                        <i class="nav-icon fas fa-level-up-alt"></i>
                         <p>
                             Levels
                             <i class="fas fa-angle-left right"></i>

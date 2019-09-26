@@ -44,9 +44,11 @@
                                         <td>{{ $student->email }}</td>
                                         <td>{{ $student->level->name }}</td>
                                         <td>
-                                            <a  class="btn btn-danger" onclick="return false;" object_id="{{ $student->id }}"
-                                               delete_url="/admin/students/{{ $student->id }}" href="#">
-                                                <i class="ti-trash"></i>Delete</a>
+                                            <form action="{{ route('students.destroy',$student->id) }}" method="POST">
+                                                {{method_field('DELETE')}}
+                                                @csrf
+                                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                                            </form>
                                         </td>
                                     </a>
                                 </tr>

@@ -18,7 +18,7 @@ class CourseController extends Controller
     {
         $levels=Level::all();
         $active = 'courses';
-        return view('admin.courses.create',compact('active'),compact('levels'));
+        return view('admin.courses.create', compact('active', 'levels'));
     }
     public function store(Request $request)
     {
@@ -46,7 +46,7 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::findOrFail($id);
-        return view('admin.courses.show')->with("course",$course);
+        return view('admin.courses.show')->with('course', $course);
     }
 
     public function edit($id)
@@ -54,22 +54,26 @@ class CourseController extends Controller
         $active = 'courses';
         $course = Course::findOrFail($id);
         $levels=Level::all();
-        return view('admin.courses.edit',compact('active'),compact('course'),compact('levels'));
+        return view('admin.courses.edit', compact('course', 'active', 'levels'));
     }
 
 
     public function update(Request $request, $id)
     {
         $course = Course::find($id)->update($request->all());
-        return redirect('/admincp/courses')->with("message", "Updated Success");
+        return redirect('/admincp/courses')->with('success', 'Course updated successfully');
     }
 
 
     public function destroy($id)
     {
-        
+
         $course = Course::findOrFail($id);
+        $path = public_path() . '/uploads/courses/' . $course->cover;
+        if (file_exists($path)) {
+            unlink($path);
+        }
         $course->delete();
-        return redirect('/admincp/courses')->with("message", "Delete Success");
+        return redirect('/admincp/courses')->with('success', 'Course deleted successfully');
     }
 }

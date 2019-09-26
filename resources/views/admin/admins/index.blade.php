@@ -45,9 +45,11 @@
                                         </td>
                                         <td>{{ $admin->created_at }}</td>
                                         <td>
-                                            <a  class="btn btn-danger" onclick="return false;" object_id="{{ $admin->id }}"
-                                               delete_url="/admin/admin/{{ $admin->id }}" href="#">
-                                                <i class="ti-trash"></i>Delete</a>
+                                            <form action="{{ route('admins.destroy',$admin->id) }}" method="POST">
+                                                {{method_field('DELETE')}}
+                                                @csrf
+                                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                                            </form>
                                         </td>
                                     </a>
                                 </tr>
