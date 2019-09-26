@@ -5,26 +5,24 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard - Instructors</h1>
+                    <h1 class="m-0 text-dark">Dashboard - Courses</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admincp/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Instructors</li>
+                        <li class="breadcrumb-item active">Courses</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    @include('admin.layouts.message')
     <section class="content">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Instructors</h3>
+                        <h3 class="card-title">Courses</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -32,24 +30,28 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Description</th>
+                                <th>Instructor</th>
                                 <th>Level</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($instructors as $instructor)
-                                <tr>
-                                        <td>{{ $instructor->name }}</td>
-                                        <td>{{ $instructor->email }}</td>
-                                        <td>{{ $instructor->level->name }}</td>
-                                        <td>
-                                            <form action="{{ route('instructors.destroy',$instructor->id) }}" method="POST">
-                                                {{method_field('DELETE')}}
-                                                @csrf
-                                                <input type="submit" class="btn btn-danger" value="Delete"/>
-                                            </form>
-                                        </td>
+                            @foreach($courses as $course)
+                                <tr><a href="#">
+                                        <td>{{ $course->name }}</td>
+                                        <td>{{ $course->description }}</td>
+                                        <td>{{ $course->instructor->name }}</td>
+                                        <td>{{ $course->level->name }}</td>
+                                        <td><a href="/admincp/courses/{{$course->id}}/edit "  class="btn btn-primary">Edit</a></td>
+                                    </a>
+                                    <td>
+                                    <form action="{{ route('courses.destroy',$course->id) }}" method="POST">
+                                    {{method_field('DELETE')}}
+                                        @csrf
+                                    <input type="submit" class="btn btn-danger" value="Delete"/>
+                                    </form>
+                                    </td>
                                 </tr>
                             @endforeach
 

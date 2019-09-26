@@ -15,6 +15,13 @@
     <link rel="stylesheet" href="{{ asset('/admincp/dist/css/adminlte.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <style>
+        .action_btns {
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
 </head>
 <!--
 BODY TAG OPTIONS:

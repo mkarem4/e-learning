@@ -39,7 +39,7 @@
                             </thead>
                             <tbody>
                             @foreach($admins as $admin)
-                                <tr><a href="#">
+                                <tr>
                                         <td>{{ $admin->name }}</td>
                                         <td>{{ $admin->email }}
                                         </td>
@@ -51,7 +51,6 @@
                                                 <input type="submit" class="btn btn-danger" value="Delete"/>
                                             </form>
                                         </td>
-                                    </a>
                                 </tr>
                             @endforeach
 

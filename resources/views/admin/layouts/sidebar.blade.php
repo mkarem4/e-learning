@@ -103,6 +103,31 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                        <i class="nav-icon fas fa-level-up-alt"></i>
+                        <p>
+                            Levels
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admincp/levels" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Levels</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admincp/levels/create"
+                               class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Level</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item has-treeview {{ $active == 'courses' ? 'menu-open': '' }}">
                     <a href="#" class="nav-link {{ $active == 'courses' ? 'active': '' }}">
                         <i class="nav-icon fas fa-book"></i>
@@ -128,27 +153,27 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ $active == 'levels' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
-                        <i class="nav-icon fas fa-level-up-alt"></i>
+                <li class="nav-item has-treeview {{ $active == 'material' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'material' ? 'active': '' }}">
+                        <i class="nav-icon fas fa-book-open"></i>
                         <p>
-                            Levels
+                            Materials
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admincp/levels" class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                            <a href="/admincp/materials" class="nav-link {{ $active == 'materials' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Levels</p>
+                                <p>Materials</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admincp/levels/create"
-                               class="nav-link {{ $active == 'levels' ? 'active': '' }}">
+                            <a href="/admincp/materials/create"
+                               class="nav-link {{ $active == 'materials' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Level</p>
+                                <p>Add New Material</p>
                             </a>
                         </li>
                     </ul>

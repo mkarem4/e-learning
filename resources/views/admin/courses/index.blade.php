@@ -38,20 +38,21 @@
                             </thead>
                             <tbody>
                             @foreach($courses as $course)
-                                <tr><a href="#">
+                                <tr>
                                         <td>{{ $course->name }}</td>
                                         <td>{{ $course->description }}</td>
                                         <td>{{ $course->instructor->name }}</td>
                                         <td>{{ $course->level->name }}</td>
-                                        <td><a href="/admincp/courses/{{$course->id}}/edit "  class="btn btn-primary">Edit</a></td>
-                                    </a>
-                                    <td>
-                                    <form action="{{ route('courses.destroy',$course->id) }}" method="POST">
+                                    <td class="action_btns"><a href="/admincp/courses/{{$course->id}}/edit "
+                                           class="btn btn-primary">Edit</a>
+
+                                        <form action="{{ route('courses.destroy',$course->id) }}">
                                     {{method_field('DELETE')}}
                                         @csrf
                                     <input type="submit" class="btn btn-danger" value="Delete"/>
                                     </form>
                                     </td>
+
                                 </tr>
                             @endforeach
 
