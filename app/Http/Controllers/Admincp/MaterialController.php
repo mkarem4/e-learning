@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admincp;
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Level;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
 class MaterialController extends Controller
 {
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::where('user_id', auth()->id())->pluck('id');
+        $materials = Material::whereIn('course_id', $courses)->get();
         $active = 'materials';
-        return view('admin.courses.index', compact('courses', 'active'));
+        return view('admin.materials.index', compact('materials', 'active'));
     }
 
     public function create()
@@ -25,23 +27,19 @@ class MaterialController extends Controller
 
     public function store(Request $request)
     {
+
+        // file type
+        //  1 -> video   2-> pdf file  3-> youtube link
+        //  if $request->youtube    then save type 3 else check on file extension ()
+        // ext = request()->file->getClientOriginalExtension(); and check on it to save type 1 or 2
+
         $this->validate($request, [
             'name' => 'required|min:3',
-            'description' => 'required',
-            'cover' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'level_id' => 'required'
         ]);
 
-        $imageName = time() . '.' . request()->cover->getClientOriginalExtension();
-        request()->cover->move(public_path('uploads/courses'), $imageName);
+        $imageName = time() . '.' . request()->file->getClientOriginalExtension();
+        request()->file->move(public_path('uploads/courses'), $imageName);
 
-        $course = new Course;
-        $course->name = request('name');
-        $course->description = request('description');
-        $course->cover = $imageName;
-        $course->level_id = request('level_id');
-        $course->user_id = auth()->id();
-        $course->save();
 
         return redirect('/admincp/courses')->with('success', 'Course added successfully .');
     }
@@ -70,9 +68,8 @@ class MaterialController extends Controller
 
     public function destroy($id)
     {
-
         $course = Course::findOrFail($id);
-        $path = public_path() . '/uploads/courses/' . $course->cover;
+        $path = public_path() . '/uploads/courses/' . $course->file;
         if (file_exists($path)) {
             unlink($path);
         }

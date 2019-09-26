@@ -153,8 +153,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item has-treeview {{ $active == 'material' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link {{ $active == 'material' ? 'active': '' }}">
+                <li class="nav-item has-treeview {{ $active == 'materials' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'materials' ? 'active': '' }}">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>
                             Materials
