@@ -51,8 +51,14 @@ class MaterialController extends Controller
         $material->chapter = request('chapter');
         if ($request->file)
             $material->file = $media;
-        else
-            $material->file = request('youtube_link');
+        else {
+            $youtube_link = request('youtube_link');
+            $contains = str_contains($youtube_link, 'watch');
+            if ($contains) {
+                $youtube_link = str_replace('watch?v=', 'embed/', $youtube_link);
+            }
+            $material->file = $youtube_link;
+        }
         $material->type = $type;
         $material->course_id = request('course_id');
 

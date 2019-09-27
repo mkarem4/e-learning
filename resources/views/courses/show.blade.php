@@ -53,19 +53,23 @@
                         <h4 class="title">Course Outline</h4>
                         <div class="content">
                             <ul class="course_list">
-                                <li class="justify-content-between d-flex">
-                                    <p>Introduction Lesson</p>
-                                    <a class="primary-btn text-uppercase" href="#">View Details</a>
-                                </li>
+
+                                @if(count($course->materials) != 0)
+                                    @foreach($course->materials as $material)
+                                        <li class="justify-content-between d-flex">
+                                            <p>{{ $material->chapter }} - {{ $material->name }}</p>
+                                            <a class="primary-btn text-uppercase"
+                                               href="/courses/materials/{{ $material->id }}">View Details</a>
+                                        </li>
+                                    @endforeach
+                                @else
+                                    <p>There isn't any materials for this course yet</p>
+                                @endif
                             </ul>
                         </div>
 
-
-{{--                        TODO if there is exam --}}
-{{--                        <a href="#" class="primary-btn2 text-uppercase enroll rounded-0 text-white">Enroll the course</a>--}}
                     </div>
                 </div>
-
 
 
             </div>
