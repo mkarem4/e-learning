@@ -47,7 +47,7 @@
                                     <td class="action_btns"><a href="/admincp/courses/{{$course->id}}/edit "
                                            class="btn btn-primary">Edit</a>
 
-                                        <form action="{{ route('courses.destroy',$course->id) }}">
+                                        <form action="{{ route('courses.destroy',$course->id) }}" method="post">
                                     {{method_field('DELETE')}}
                                         @csrf
                                     <input type="submit" class="btn btn-danger" value="Delete"/>
