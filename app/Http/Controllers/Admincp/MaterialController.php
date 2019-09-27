@@ -31,8 +31,8 @@ class MaterialController extends Controller
             'name' => 'required|min:3',
             'note' => 'required',
             'chapter' => 'required|min:3',
-            'file' => 'sometimes|mimes:pdf,video/mp4|max:10000',
-//            'youtube_link' => 'sometimes|regex:/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+$/',
+            'file' => 'sometimes|mimes:pdf,mp4|max:10000',
+//            'youtube_link' => array('sometimes,regex:/http:\/\/(?:www.)?(youtube).com\/(?:watch\?v=)?(.*?)(?:\z|&)/'),
             'course_id' => 'required'
         ]);
 
@@ -52,11 +52,7 @@ class MaterialController extends Controller
         if ($request->file)
             $material->file = $media;
         else {
-            $youtube_link = request('youtube_link');
-            $contains = str_contains($youtube_link, 'watch');
-            if ($contains) {
-                $youtube_link = str_replace('watch?v=', 'embed/', $youtube_link);
-            }
+            $youtube_link = str_replace('watch?v=', 'embed/', request('youtube_link'));
             $material->file = $youtube_link;
         }
         $material->type = $type;
@@ -77,17 +73,47 @@ class MaterialController extends Controller
     {
         $active = 'materials';
         $material = Material::findOrFail($id);
-        $courses=Course::all();
-        return view('admin.materials.edit', compact('material', 'active','courses'));
+        $courses = Course::where('user_id', auth()->id())->get();
+        return view('admin.materials.edit', compact('material', 'active', 'courses'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $material = Material::find($id)->update($request->all());
-        // // dd($id);
-        // dd($request->all());
-        // dd($material);
+        $material = Material::find($id);
+        $this->validate($request, [
+            'name' => 'required|min:3',
+            'note' => 'required',
+            'chapter' => 'required|min:3',
+            'file' => 'sometimes|mimes:pdf,mp4|max:10000',
+//            'youtube_link' => ['sometimes,regex:/http:\/\/(?:www.)?(youtube).com\/(?:watch\?v=)?(.*?)(?:\z|&)/'],
+            'course_id' => 'required'
+        ]);
+
+        $type = 0;
+        if ($request->youtube_link)
+            $type = 3;
+        else {
+            $ext = request()->file->getClientOriginalExtension();
+            $ext == 'pdf' ? $type = 2 : $type = 1;
+            $media = time() . '.' . request()->file->getClientOriginalExtension();
+            request()->file->move(public_path('uploads/materials'), $media);
+        }
+
+        $material->name = request('name');
+        $material->note = request('note');
+        $material->chapter = request('chapter');
+        if ($request->file)
+            $material->file = $media;
+        else {
+            $youtube_link = str_replace('watch?v=', 'embed/', request('youtube_link'));
+            $material->file = $youtube_link;
+        }
+        $material->type = $type;
+        $material->course_id = request('course_id');
+
+        $material->save();
+
         return redirect('/admincp/materials')->with('success', 'Material updated successfully');
     }
 

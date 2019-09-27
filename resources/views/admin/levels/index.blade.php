@@ -17,6 +17,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    @include('admin.layouts.message')
     <section class="content">
         <div class="row">
             <div class="col-12">

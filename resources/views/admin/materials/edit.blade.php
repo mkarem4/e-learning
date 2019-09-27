@@ -68,10 +68,10 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">YouTube Link</label>
-                            <input type="text" class="form-control" name="YouTube Link" id="exampleInputEmail1" value="{{ $material->youtube_link }}" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" name="youtube_link" id="exampleInputEmail1" value="{{ $material->youtube_link }}" aria-describedby="emailHelp">
                         </div>
 
-                        
+
                     </div>
 
 
