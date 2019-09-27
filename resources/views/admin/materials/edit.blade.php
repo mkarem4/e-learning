@@ -31,7 +31,7 @@
                         <label for="course">Courses</label>
                             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
                                     data-select2-id="1" tabindex="-1" aria-hidden="true"
-                                    name="Courses">
+                                    name="course_id">
                                 @foreach($courses as $course)
                                     <option
                                         value="{{$course->id}}" {{ ($course->id == $material->course->id) ? 'selected':'' }}>
@@ -44,21 +44,21 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Material Name</label>
-                            <input type="text" class="form-control" name="Material Name" id="exampleInputEmail1" value="{{ $material->name }}" aria-describedby="emailHelp" placeholder="Enter Name">
+                            <input type="text" class="form-control" name="name"  id="exampleInputEmail1" value="{{ $material->name }}" aria-describedby="emailHelp" placeholder="Enter Name">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Chapter Name</label>
-                            <input type="text" class="form-control" name="Chapter Name" id="exampleInputEmail1" value="{{ $material->chapter }}" aria-describedby="emailHelp" placeholder="Enter Chapter Name">
+                            <input type="text" class="form-control" name="chapter" id="exampleInputEmail1" value="{{ $material->chapter }}" aria-describedby="emailHelp" placeholder="Enter Chapter Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">NOte</label>
-                            <input type="text" class="form-control" name="Note" id="exampleFormControlTextarea1" value="{{ $material->note }}" aria-describedby="emailHelp" placeholder="Enter Note">
+                            <label for="exampleFormControlTextarea1">Note</label>
+                            <input type="text" class="form-control" name="note" id="exampleFormControlTextarea1" value="{{ $material->note }}" aria-describedby="emailHelp" placeholder="Enter Note">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">File</label>
                             <div class="input-group">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="File"
+                                    <input type="file" class="custom-file-input" id="exampleInputFile" name="file"
                                            value="{{ $material->file }}">
                                     <label class="custom-file-label" for="exampleInputFile"></label>
                                 </div>

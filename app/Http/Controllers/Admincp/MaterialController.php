@@ -85,6 +85,9 @@ class MaterialController extends Controller
     public function update(Request $request, $id)
     {
         $material = Material::find($id)->update($request->all());
+        // // dd($id);
+        // dd($request->all());
+        // dd($material);
         return redirect('/admincp/materials')->with('success', 'Material updated successfully');
     }
 
