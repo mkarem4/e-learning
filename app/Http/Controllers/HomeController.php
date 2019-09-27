@@ -27,7 +27,7 @@ class HomeController extends Controller
         if (auth()->user() && auth()->user()->type == 2)
             $courses = Course::where('user_id', auth()->user()->id)->get();
         elseif (auth()->user() && auth()->user()->type == 3)
-            $courses = Course::where('level_id', auth()->user()->level)->get();
+            $courses = Course::where('level_id', auth()->user()->level_id)->get();
         else
             $courses = Course::all();
         return view('home', compact('courses'));
