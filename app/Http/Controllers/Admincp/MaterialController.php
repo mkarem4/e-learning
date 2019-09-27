@@ -20,60 +20,76 @@ class MaterialController extends Controller
 
     public function create()
     {
-        $courses = Course::where('user_id',auth()->id())->get();
-        $active = 'courses';
-        return view('admin.courses.create', compact('active', 'courses'));
+        $courses = Course::where('user_id', auth()->id())->get();
+        $active = 'materials';
+        return view('admin.materials.create', compact('active', 'courses'));
     }
 
     public function store(Request $request)
     {
-
-        // file type
-        //  1 -> video   2-> pdf file  3-> youtube link
-        //  if $request->youtube    then save type 3 else check on file extension ()
-        // ext = request()->file->getClientOriginalExtension(); and check on it to save type 1 or 2
-
         $this->validate($request, [
             'name' => 'required|min:3',
+            'note' => 'required',
+            'chapter' => 'required|min:3',
+            'file' => 'sometimes|mimes:pdf,video/mp4|max:10000',
+//            'youtube_link' => 'sometimes|regex:/^(http(s)?:\/\/)?((w){3}.)?youtu(be|.be)?(\.com)?\/.+$/',
+            'course_id' => 'required'
         ]);
 
-        $imageName = time() . '.' . request()->file->getClientOriginalExtension();
-        request()->file->move(public_path('uploads/courses'), $imageName);
+        $type = 0;
+        if ($request->youtube_link)
+            $type = 3;
+        else {
+            $ext = request()->file->getClientOriginalExtension();
+            $ext == 'pdf' ? $type = 2 : $type = 1;
+            $media = time() . '.' . request()->file->getClientOriginalExtension();
+            request()->file->move(public_path('uploads/materials'), $media);
+        }
+        $material = new Material;
+        $material->name = request('name');
+        $material->note = request('note');
+        $material->chapter = request('chapter');
+        if ($request->file)
+            $material->file = $media;
+        else
+            $material->file = request('youtube_link');
+        $material->type = $type;
+        $material->course_id = request('course_id');
 
+        $material->save();
 
-        return redirect('/admincp/courses')->with('success', 'Course added successfully .');
+        return redirect('/admincp/materials')->with('success', 'Material added successfully .');
     }
 
     public function show($id)
     {
-        $course = Course::findOrFail($id);
-        return view('admin.courses.show')->with('course', $course);
+        $material = Material::findOrFail($id);
+        return view('admin.materials.show', compact('material'));
     }
 
     public function edit($id)
     {
-        $active = 'courses';
-        $course = Course::findOrFail($id);
-        $levels = Level::all();
-        return view('admin.courses.edit', compact('course', 'active', 'levels'));
+        $active = 'materials';
+        $material = Material::findOrFail($id);
+        return view('admin.materials.edit', compact('material', 'active'));
     }
 
 
     public function update(Request $request, $id)
     {
         $course = Course::find($id)->update($request->all());
-        return redirect('/admincp/courses')->with('success', 'Course updated successfully');
+        return redirect('/admincp/materials')->with('success', 'Course updated successfully');
     }
 
 
     public function destroy($id)
     {
-        $course = Course::findOrFail($id);
-        $path = public_path() . '/uploads/courses/' . $course->file;
+        $material = Material::findOrFail($id);
+        $path = public_path() . '/uploads/materials/' . $material->file;
         if (file_exists($path)) {
             unlink($path);
         }
-        $course->delete();
-        return redirect('/admincp/courses')->with('success', 'Course deleted successfully');
+        $material->delete();
+        return redirect('/admincp/materials')->with('success', 'Material deleted successfully');
     }
 }

@@ -23,30 +23,36 @@
         <div class="row">
             <div class="col-12">
                 <!-- form start -->
-                <form role="form" method='post' action="{{ route('courses.store') }}" enctype="multipart/form-data">
+                <form role="form" method='post' action="{{ route('materials.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
+                        <div class="form-group">
+                            <label for="course_id">Course</label>
+                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                    data-select2-id="1" tabindex="-1" aria-hidden="true" name="course_id">
+                                <option selected="selected" data-select2-id="3">Select Course</option>
+                                @foreach($courses as $course)
+                                    <option value="{{$course->id}}">{{$course->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Material Name</label>
                             <input type="text" class="form-control" name="name" id="exampleInputEmail1"
                                    placeholder="Enter Name">
                         </div>
-
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Chapter</label>
+                            <label for="exampleInputEmail1">Chapter Name</label>
                             <input type="text" class="form-control" name="chapter" id="exampleInputEmail1"
-                                   placeholder="Enter Name">
+                                   placeholder="Enter Chapter Name">
                         </div>
-
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">YouTube Link</label>
-                            <input type="text" class="form-control" name="youtube_link" id="exampleInputEmail1"
-                                   placeholder="Enter Name">
+                        <div class="form-group ">
+                            <label for="exampleFormControlTextarea1">Note</label>
+                            <textarea class="form-control" name="note" id="exampleFormControlTextarea1"
+                                      placeholder="Enter Note " rows="3"></textarea>
                         </div>
-
-
                         <div class="form-group">
-                            <label for="exampleInputFile">Files</label>
+                            <label for="exampleInputFile">File</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="exampleInputFile" name="file">
@@ -58,15 +64,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="level_id">Course</label>
-                            <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="course_id">
-                                <option selected="selected" data-select2-id="3">Select Course</option>
-                                @foreach($courses as $course)
-                                    <option value="{{$course->id}}" >{{$course->name}}</option>
-                                @endforeach
-                            </select>
+                            <label for="exampleInputEmail1">YouTube Link</label>
+                            <input type="text" class="form-control" name="youtube_link" id="exampleInputEmail1"
+                                   placeholder="Enter YouTube Link">
                         </div>
-					</div>
+                    </div>
 
                     <!-- /.card-body -->
 

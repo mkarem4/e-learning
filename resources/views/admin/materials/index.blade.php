@@ -30,32 +30,33 @@
                             <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Instructor</th>
                                 <th>Course</th>
                                 <th>Chapter</th>
+                                <th>Note</th>
+                                <th>Type</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @foreach($courses as $course)--}}
-{{--                                <tr>--}}
-{{--                                    <td>{{ $course->name }}</td>--}}
-{{--                                    <td>{{ $course->description }}</td>--}}
-{{--                                    <td>{{ $course->instructor->name }}</td>--}}
-{{--                                    <td>{{ $course->level->name }}</td>--}}
-{{--                                    <td class="action_btns"><a href="/admincp/courses/{{$course->id}}/edit "--}}
-{{--                                                               class="btn btn-primary">Edit</a>--}}
+                            @foreach($materials as $material)
+                                <tr>
+                                    <td>{{ $material->name }}</td>
+                                    <td>{{ $material->course->name }}</td>
+                                    <td>{{ $material->chapter }}</td>
+                                    <td>{{ $material->note }}</td>
+                                    <td>{{ ($material->type == 1) ? ('Video') : (($material->type == 2) ? ('PDF File') : ('YouTube Link')) }}</td>
+                                    <td class="action_btns"><a href="/admincp/materials/{{$material->id}}/edit "
+                                                               class="btn btn-primary">Edit</a>
 
-{{--                                        <form action="{{ route('courses.destroy',$course->id) }}">--}}
-{{--                                            {{method_field('DELETE')}}--}}
-{{--                                            @csrf--}}
-{{--                                            <input type="submit" class="btn btn-danger" value="Delete"/>--}}
-{{--                                        </form>--}}
-{{--                                    </td>--}}
+                                        <form action="{{ route('materials.destroy',$material->id) }}" method="POST">
+                                            {{method_field('DELETE')}}
+                                            @csrf
+                                            <input type="submit" class="btn btn-danger" value="Delete"/>
+                                        </form>
+                                    </td>
 
-{{--                                </tr>--}}
-{{--                            @endforeach--}}
+                                </tr>
+                            @endforeach
 
 
                             </tbody>
