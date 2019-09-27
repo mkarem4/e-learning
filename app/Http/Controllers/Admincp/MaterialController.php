@@ -71,14 +71,15 @@ class MaterialController extends Controller
     {
         $active = 'materials';
         $material = Material::findOrFail($id);
-        return view('admin.materials.edit', compact('material', 'active'));
+        $courses=Course::all();
+        return view('admin.materials.edit', compact('material', 'active','courses'));
     }
 
 
     public function update(Request $request, $id)
     {
-        $course = Course::find($id)->update($request->all());
-        return redirect('/admincp/materials')->with('success', 'Course updated successfully');
+        $material = Material::find($id)->update($request->all());
+        return redirect('/admincp/materials')->with('success', 'Material updated successfully');
     }
 
 
