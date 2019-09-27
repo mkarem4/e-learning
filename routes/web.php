@@ -20,6 +20,7 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 Route::resource('courses', 'CourseController');
+Route::get('/courses/materials/{id}','MaterialController@show');
 
 // dashboard
 Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], function () {

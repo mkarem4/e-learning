@@ -17,7 +17,7 @@
                      alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">AELS Admin </a>
+                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
@@ -53,7 +53,8 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="/admincp/admins/create" class="nav-link {{ $active == 'admins' ? 'active': '' }}">
+                                <a href="/admincp/admins/create"
+                                   class="nav-link {{ $active == 'admins' ? 'active': '' }}">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add New Admin</p>
                                 </a>
@@ -72,31 +73,31 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/admincp/instructors"
-                               class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Instructors</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/admincp/instructors/create" class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Add New Instructor</p>
-                            </a>
-                        </li>
-
-
+                        @if(auth()->user()->type == 1)
+                            <li class="nav-item">
+                                <a href="/admincp/instructors"
+                                   class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Instructors</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/admincp/instructors/create"
+                                   class="nav-link {{ $active == 'instructors' ? 'active': '' }}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Instructor</p>
+                                </a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a href="/admincp/students" class="nav-link {{ $active == 'students' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Students</p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="/admincp/students/create" class="nav-link {{ $active == 'students' ? 'active': '' }}">
+                            <a href="/admincp/students/create"
+                               class="nav-link {{ $active == 'students' ? 'active': '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add New Student</p>
                             </a>

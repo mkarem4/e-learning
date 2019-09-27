@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admincp;
 
 use App\Http\Controllers\Controller;
 
+use App\Models\Course;
+use App\Models\Material;
+use App\User;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use App\services\SharingService;
@@ -21,7 +24,11 @@ class HomeController extends Controller
     public function index()
     {
         $active = 'dashboard';
-        return view('admin.home.dashboard',compact('active'));
+        $instructors = User::where('type', 2)->count();
+        $students = User::where('type', 3)->count();
+        $courses = Course::count();
+        $materials = Material::count();
+        return view('admin.home.dashboard', compact('active'), compact('instructors', 'students', 'courses', 'materials'));
     }
 
 
