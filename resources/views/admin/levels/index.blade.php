@@ -34,14 +34,12 @@
                             </thead>
                             <tbody>
                             @foreach($levels as $level)
-                                <tr><a href="#">
+                                <tr>
 
                                         <td>{{ $level->name }}</td>
-                                        <td><a href="/admincp/levels/{{$level->id}}/edit "  class="btn btn-primary">Edit</a></td>
-                                        
-                                    </a>
-                                    <td>
-                                    <form action="{{ route('levels.destroy',$level->id) }}" method="POST">
+                                    <td class="action_btns"><a href="/admincp/levels/{{$level->id}}/edit " class="btn btn-primary">Edit</a>
+
+                                        <form action="{{ route('levels.destroy',$level->id) }}" method="POST">
                                     {{method_field('DELETE')}}
                                         @csrf
                                     <input type="submit" class="btn btn-danger" value="Delete"/>

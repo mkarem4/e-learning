@@ -103,6 +103,8 @@ class InstructorController extends Controller
      */
     public function destroy($id)
     {
-
+        $instructor = User::findOrFail($id);
+        $instructor->delete();
+        return redirect('/admincp/instructors')->with('message', 'Deleted Success');
     }
 }

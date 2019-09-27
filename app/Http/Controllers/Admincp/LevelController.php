@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Admincp;
 use App\Http\Controllers\Controller;
 use App\Models\Level;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class LevelController extends Controller
 {
@@ -35,29 +33,28 @@ class LevelController extends Controller
     public function show($id)
     {
         $level = Level::findOrFail($id);
-        return view('admin.levels.show')->with("level",$level);
+        return view('admin.levels.show')->with('level',$level);
     }
 
     public function edit($id)
     {
         $level = Level::findOrFail($id);
         $active = 'levels';
-        return view('admin.levels.edit',compact('active'),compact('level'));
+        return view('admin.levels.edit', compact('active', 'level'));
     }
 
        public function update(Request $request, $id)
     {
         $level = Level::find($id)->update($request->all());
-        return redirect('/admincp/levels')->with("message", "Updated Success");
+        return redirect('/admincp/levels')->with('message', 'Updated Success');
     }
 
 
     public function destroy($id)
     {
-        
         $level = Level::findOrFail($id);
         $level->delete();
-        return redirect('/admincp/levels')->with("message", "Delete Success");
+        return redirect('/admincp/levels')->with('message', 'Delete Success');
     }
 
 }

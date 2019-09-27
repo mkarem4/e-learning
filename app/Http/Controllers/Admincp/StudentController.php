@@ -102,6 +102,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-
+        $student = User::findOrFail($id);
+        $student->delete();
+        return redirect('/admincp/students')->with('message', 'Deleted Success');
     }
 }

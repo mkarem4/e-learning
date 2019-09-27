@@ -39,16 +39,17 @@
                             </thead>
                             <tbody>
                             @foreach($instructors as $instructor)
-                                <tr><a href="#">
+                                <tr>
                                         <td>{{ $instructor->name }}</td>
                                         <td>{{ $instructor->email }}</td>
                                         <td>{{ $instructor->level->name }}</td>
                                         <td>
-                                            <a  class="btn btn-danger" onclick="return false;" object_id="{{ $instructor->id }}"
-                                               delete_url="/admin/instructors/{{ $instructor->id }}" href="#">
-                                                <i class="ti-trash"></i>Delete</a>
+                                            <form action="{{ route('instructors.destroy',$instructor->id) }}" method="POST">
+                                                {{method_field('DELETE')}}
+                                                @csrf
+                                                <input type="submit" class="btn btn-danger" value="Delete"/>
+                                            </form>
                                         </td>
-                                    </a>
                                 </tr>
                             @endforeach
 
