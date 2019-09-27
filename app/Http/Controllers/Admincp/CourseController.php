@@ -53,8 +53,11 @@ class CourseController extends Controller
     {
         $active = 'courses';
         $course = Course::findOrFail($id);
-        $levels=Level::all();
-        return view('admin.courses.edit',compact('active'),compact('course'),compact('levels'));
+        $level=Level::all();
+       // dd($level);
+       $data =['active','course','level'];
+       return view('admin.courses.edit')->with("data",$data);
+        // return view('admin.courses.edit',compact('active','course'));
     }
 
 

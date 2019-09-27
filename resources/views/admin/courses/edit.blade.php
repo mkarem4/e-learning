@@ -49,7 +49,7 @@
                         <label for="level_id">Levels</label>
                             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true" name="level_id">
                                 <option selected="selected" data-select2-id="3">Select Level</option>
-                                @foreach($levels as $level)
+                                @foreach($level as $level)
                                     <option value="{{$level->id}}" >{{$level->name}}</option>
                                 @endforeach
                             </select>
