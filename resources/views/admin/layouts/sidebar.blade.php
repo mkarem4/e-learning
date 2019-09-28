@@ -178,8 +178,8 @@
                             </a>
                         </li>
                     </ul>
-                </li> <li class="nav-item has-treeview {{ $active == 'exams' ? 'menu-open': '' }}">
-                    <a href="#" class="nav-link {{ $active == 'exams' ? 'active': '' }}">
+                <li class="nav-item has-treeview {{ $active == 'exams' || $active == 'questions' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'exams' || $active == 'questions' ? 'active': '' }}">
                         <i class="nav-icon fas fa-book-open"></i>
                         <p>
                             Exams
@@ -201,6 +201,26 @@
                                 <p>Add New Exam</p>
                             </a>
                         </li>
+
+
+                        <li class="nav-item">
+                            <a href="/admincp/questions" class="nav-link {{ $active == 'questions' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Questions</p>
+                            </a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="/admincp/questions/create"
+                               class="nav-link {{ $active == 'questions' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Exam Question</p>
+                            </a>
+                        </li>
+
+
+
                     </ul>
                 </li>
 

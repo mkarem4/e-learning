@@ -35,47 +35,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Exam Name</label>
-                            <input type="text" class="form-control" name="name" id="exampleInputEmail1"
+                            <label for="name">Exam Name</label>
+                            <input type="text" class="form-control" name="name" id="name"
                                    placeholder="Enter Name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Total Degree</label>
-                            <input type="text" class="form-control" name="degree" id="exampleInputEmail1"
+                            <label for="degree">Total Degree</label>
+                            <input type="text" class="form-control" name="degree" id="degree"
                                    placeholder="Enter Degree">
                         </div>
-                        <div class="form-group ">
-                            <label for="exampleFormControlTextarea1">Question 1</label>
-                            <textarea class="form-control" name="question1" id="exampleFormControlTextarea1"
-                                      placeholder="Enter question1 " rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">question Answer</label>
-                            <input type="exampleFormControlTextarea1" class="form-control" name="question1_answer" id="exampleFormControlTextarea1"
-                                   placeholder="Enter Answer">
-                        </div>
-                        <div class="form-group ">
-                            <label for="exampleFormControlTextarea1">Question 2</label>
-                            <textarea class="form-control" name="question2" id="exampleFormControlTextarea1"
-                                      placeholder="Enter question2 " rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">question Answer</label>
-                            <input type="exampleFormControlTextarea1" class="form-control" name="question2_answer" id="exampleFormControlTextarea1"
-                                   placeholder="Enter Answer">
-                        </div>
-                        <div class="form-group ">
-                            <label for="exampleFormControlTextarea1">Question 3</label>
-                            <textarea class="form-control" name="question3" id="exampleFormControlTextarea1"
-                                      placeholder="Enter question3 " rows="3"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Question Answer</label>
-                            <input type="exampleFormControlTextarea1" class="form-control" name="question3_answer" id="exampleInputEmail1"
-                                   placeholder="Enter Answer">
-                        </div>
 					</div>
-                
+
                     <!-- /.card-body -->
 
                     <div class="card-footer">

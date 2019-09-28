@@ -17,11 +17,12 @@ class CreateExamsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('degree');
-            $table->integer('course_id')->unsigned();
+            $table->bigInteger('course_id')->unsigned();
             $table->timestamps();
 
-//            $table->foreign('course_id')->references('id')->on('courses')
-//                ->onDelete('cascade');
+            $table->foreign('course_id')
+                ->references('id')->on('courses')
+                ->onDelete('cascade');
         });
     }
 

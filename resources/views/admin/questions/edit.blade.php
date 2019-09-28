@@ -40,14 +40,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="name">Exam Name</label>
-                            <input type="text" class="form-control" name="name" id="name" value="{{ $exam->name }}" aria-describedby="emailHelp" placeholder="Enter Name">
+                            <label for="exampleInputEmail1">Exam Name</label>
+                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" value="{{ $exam->name }}" aria-describedby="emailHelp" placeholder="Enter Name">
                         </div>
 
 
                         <div class="form-group">
-                            <label for="degree">Total Degree</label>
-                            <input type="text" class="form-control" name="degree" id="degree" value="{{ $exam->degree }}" aria-describedby="emailHelp" placeholder="Enter degree">
+                            <label for="exampleInputEmail1">Total Degree</label>
+                            <input type="text" class="form-control" name="degree" id="exampleInputEmail1" value="{{ $exam->degree }}" aria-describedby="emailHelp" placeholder="Enter degree">
                         </div>
                     </div>
 

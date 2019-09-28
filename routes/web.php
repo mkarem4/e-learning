@@ -32,5 +32,6 @@ Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], funct
     Route::resource('/levels', 'Admincp\LevelController');
     Route::resource('/materials', 'Admincp\MaterialController');
     Route::resource('/exams', 'Admincp\ExamController');
+    Route::resource('/questions', 'Admincp\QuestionController');
 
 });

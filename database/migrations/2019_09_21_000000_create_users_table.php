@@ -20,13 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('type')->unsigned();
-            $table->integer('level_id')->unsigned()->nullable();
+            $table->bigInteger('level_id')->unsigned()->nullable();
             $table->rememberToken();
             $table->timestamps();
 
-//            $table->foreign('level_id')
-//                ->references('id')->on('levels')
-//                ->onDelete('cascade');
+            $table->foreign('level_id')
+                ->references('id')->on('levels')
+                ->onDelete('cascade');
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMaterialsTable extends Migration
+class CreateQuestionChoicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateMaterialsTable extends Migration
      */
     public function up()
     {
-        Schema::create('materials', function (Blueprint $table) {
+        Schema::create('question_choices', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('type');
-            $table->string('chapter');
-            $table->string('file');
-            $table->text('note');
-            $table->bigInteger('course_id')->unsigned();
+            $table->integer('question_id')->unsigned();
+            $table->string('choice');
+            $table->integer('is_correct');
             $table->timestamps();
 
-            $table->foreign('course_id')
-                ->references('id')->on('courses')
+            $table->foreign('question_id')
+                ->references('id')->on('questions')
                 ->onDelete('cascade');
         });
     }
@@ -36,6 +33,6 @@ class CreateMaterialsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('materials');
+        //
     }
 }

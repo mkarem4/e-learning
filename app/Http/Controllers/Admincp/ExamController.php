@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers\Admincp;
+
 use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Models\Exam;
-use App\Models\Questions;
+use App\Models\Question;
 use Illuminate\Http\Request;
 
 class ExamController extends Controller
@@ -13,40 +14,26 @@ class ExamController extends Controller
     {
         $exams = Exam::all();
         $active = 'exams';
-        $course =Course::all();
-        return view('admin.exams.index',compact('exams','active','course'));
+        return view('admin.exams.index', compact('exams', 'active'));
     }
+
     public function create()
     {
-        $courses=Course::all();
+        $courses = Course::where('user_id', auth()->id())->get();
         $active = 'exams';
-        return view('admin.exams.create', compact('active','courses'));
+        return view('admin.exams.create', compact('active', 'courses'));
     }
+
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|min:3',
-            'degree' =>'required',
-            'course_id' =>'required',
-            'question1' =>'required',
-            'question2' =>'required',
-            'question3' =>'required',
+            'degree' => 'required|integer',
+            'course_id' => 'required',
         ]);
 
-        $exam = new Exam;
-        $exam->name = request('name');
-        $exam->degree = request('degree');
-        $exam->course_id = request('course_id');
-        $exam->save();
-        $question = new Questions;
-        $question->question1 = request('question1');
-        $question->question2 = request('question2');
-        $question->question3 = request('question3');
-        $question->question1_answer = request('question1_answer');
-        $question->question2_answer = request('question2_answer');
-        $question->question3_answer = request('question3_answer');
-        $question->exam_id = 0;
-        $question->save();
+        $data = $request->all();
+        Exam::create($data);
 
         return redirect('/admincp/exams')->with('success', 'Exam added successfully .');
     }
@@ -61,10 +48,9 @@ class ExamController extends Controller
     {
         $active = 'exams';
         $exam = Exam::findOrFail($id);
-        $courses = Course::all();
-        $question = Questions::all();
-        // dd($question);
-        return view('admin.exams.edit', compact('exam', 'active', 'courses','question'));
+        $courses = Course::where('user_id', auth()->id())->get();
+
+        return view('admin.exams.edit', compact('exam', 'active', 'courses'));
     }
 
 

@@ -30,23 +30,23 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th>Course</th>
-                                <th>Exam Name</th>
-                                <th>Total Degree</th>
+                                <th>Exam</th>
+                                <th>Question</th>
+                                <th>Degree</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($exams as $exam)
+                            @foreach($questions as $question)
                                 <tr>
-                                    <td>{{ $exam->course->name }}</td>
-                                    <td>{{ $exam->name }}</td>
-                                    <td>{{ $exam->degree }}</td>
+                                    <td>{{ $question->exam->name }}</td>
+                                    <td>{{ $question->question }}</td>
+                                    <td>{{ $question->degree }}</td>
 
-                                    <td class="action_btns"><a href="/admincp/exams/{{$exam->id}}/edit "
+                                    <td class="action_btns"><a href="/admincp/questions/{{$question->id}}/edit "
                                                                class="btn btn-primary">Edit</a>
 
-                                        <form action="{{ route('exams.destroy',$exam->id) }}" method="post">
+                                        <form action="{{ route('questions.destroy',$question->id) }}" method="post">
                                             {{method_field('DELETE')}}
                                             @csrf
                                             <input type="submit" class="btn btn-danger" value="Delete"/>
