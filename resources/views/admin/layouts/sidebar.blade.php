@@ -178,7 +178,33 @@
                             </a>
                         </li>
                     </ul>
+                </li> <li class="nav-item has-treeview {{ $active == 'exams' ? 'menu-open': '' }}">
+                    <a href="#" class="nav-link {{ $active == 'exams' ? 'active': '' }}">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Exams
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admincp/exams" class="nav-link {{ $active == 'exams' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Exams</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/admincp/exams/create"
+                               class="nav-link {{ $active == 'exams' ? 'active': '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add New Exam</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
+
+
 
             </ul>
         </nav>
