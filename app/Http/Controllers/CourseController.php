@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
-use App\Models\Material;
+use App\Models\Exam;
+use App\Models\StudentAnswer;
 
 class CourseController extends Controller
 {
@@ -21,6 +22,9 @@ class CourseController extends Controller
     public function show($id)
     {
         $course = Course::find($id);
-        return view('courses.show', compact('course'));
+        $exam =Exam::where('course_id',$course->id)->first();
+        foreach ($exam->questions as $question)
+            $answers = StudentAnswer::where('user_id', auth()->id())->where('question_id', $question->id)->exists();
+        return view('courses.show', compact('course','exam','answers'));
     }
 }

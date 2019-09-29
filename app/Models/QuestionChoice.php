@@ -13,6 +13,7 @@ class QuestionChoice extends Model
 
     public $fillable = ['choice', 'is_correct', 'question_id'];
 
+
     public function question()
     {
         return $this->belongsTo(Question::class, 'question_id');

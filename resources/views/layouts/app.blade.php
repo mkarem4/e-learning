@@ -53,7 +53,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <a class="navbar-brand logo_h" href="/"
-                ><img src="website/img/logo.png" alt=""
+                ><img src="{{ asset('website/img/logo.png') }}" alt=""
                     /></a>
                 <button
                     class="navbar-toggler"

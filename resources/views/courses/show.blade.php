@@ -54,7 +54,7 @@
                         <div class="content">
                             <ul class="course_list">
 
-                                @if(count($course->materials) != 0)
+                                @if(count($course->materials) > 0)
                                     @foreach($course->materials as $material)
                                         <li class="justify-content-between d-flex">
                                             <p>{{ $material->chapter }} - {{ $material->name }}</p>
@@ -67,6 +67,21 @@
                                 @endif
                             </ul>
                         </div>
+
+                        @if($exam && !$answers)
+                            <h4 class="title">Exam</h4>
+                            <div class="content">
+                                <a href="/courses/exam/{{ $exam->id }}"
+                                   class="primary-btn2 text-uppercase enroll rounded-0 text-white">Enroll the
+                                    Exam</a>
+                            </div>
+
+                        @elseif($answers)
+                            <h4 class="title">Exam</h4>
+                            <div class="content">
+                               You already had this exam
+                            </div>
+                        @endif
 
                     </div>
                 </div>

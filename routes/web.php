@@ -21,6 +21,8 @@ Route::get('/contact', 'HomeController@contact');
 
 Route::resource('courses', 'CourseController');
 Route::get('/courses/materials/{id}','MaterialController@show');
+Route::get('/courses/exam/{id}','ExamController@show');
+Route::post('/exam/result/{id}','ExamController@saveResult');
 
 // dashboard
 Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], function () {
@@ -33,5 +35,4 @@ Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], funct
     Route::resource('/materials', 'Admincp\MaterialController');
     Route::resource('/exams', 'Admincp\ExamController');
     Route::resource('/questions', 'Admincp\QuestionController');
-
 });
