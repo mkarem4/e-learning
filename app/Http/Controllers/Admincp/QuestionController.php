@@ -116,7 +116,11 @@ class QuestionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $courses = Course::where('user_id', auth()->id())->pluck('id');
+        $exams = Exam::whereIn('course_id', $courses)->get();
+        $question = Question::findOrFail($id);
+        $active = 'questions';
+        return view('admin.questions.edit', compact('exams', 'active', 'question'));
     }
 
     /**
@@ -128,7 +132,53 @@ class QuestionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'degree' => 'required|integer',
+            'question' => 'required|min:5',
+            'answer1' => 'required|min:3',
+            'answer2' => 'required|min:3',
+            'answer3' => 'required|min:3',
+            'is_correct' => 'required',
+            'exam_id' => 'required'
+        ]);
+
+        if ($request->is_correct == 'answer1') {
+            $is_correct1 = 1;
+            $is_correct2 = 0;
+            $is_correct3 = 0;
+        } elseif ($request->is_correct == 'answer2') {
+            $is_correct1 = 0;
+            $is_correct2 = 1;
+            $is_correct3 = 0;
+        } else {
+            $is_correct1 = 0;
+            $is_correct2 = 0;
+            $is_correct3 = 1;
+        }
+
+        $answers = [];
+        array_push($answers, array($request->answer1, $is_correct1), array($request->answer2, $is_correct2), array($request->answer3, $is_correct3));
+
+        $question = Question::findOrFail($id);
+        $question->question = $request->question;
+        $question->exam_id = $request->exam_id;
+        $question->degree = $request->degree;
+
+        if ($question->save()) {
+            $id = $question->id;
+            foreach ($answers as $answer) {
+                $data = array(
+                    'question_id' => $id,
+                    'choice' => $answer[0],
+                    'is_correct' => $answer[1],
+                );
+                QuestionChoice::destroy($id);
+                QuestionChoice::insert($data);
+            }
+
+        }
+
+        return view('admin.questions.index')->with('success', 'Question updated successfully');
     }
 
     /**

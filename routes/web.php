@@ -20,10 +20,13 @@ Route::get('/about', 'HomeController@about');
 Route::get('/contact', 'HomeController@contact');
 
 Route::resource('courses', 'CourseController');
-Route::get('/courses/materials/{id}','MaterialController@show');
-Route::get('/courses/exam/{id}','ExamController@show');
-Route::post('/exam/result/{id}','ExamController@saveResult');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/courses/materials/{id}', 'MaterialController@show');
+    Route::get('/courses/exam/{id}', 'ExamController@show');
+    Route::post('/exam/result/{id}', 'ExamController@saveResult');
+    Route::get('/exam/results/{id}', 'CourseController@getExamResult');
+});
 // dashboard
 Route::group(['prefix' => 'admincp', 'middleware' => ['auth', 'isAdmin']], function () {
     Route::get('/dashboard', 'Admincp\HomeController@index');

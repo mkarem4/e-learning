@@ -7,53 +7,79 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-dark">Dashboard - exams</h1>
+                    <h1 class="m-0 text-dark">Dashboard - Questions</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admincp/dashboard">Home</a></li>
-                        <li class="breadcrumb-item active">Exams</li>
+                        <li class="breadcrumb-item active">Questions</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
+    @include('admin.layouts.message')
     <section class="content">
         <div class="row">
             <div class="col-12">
                 <!-- form start -->
-                <form role="form" method='post' action="{{ route('exams.update',$exam->id) }}" enctype="multipart/form-data">
+                <form role="form" method='post' action="{{ route('questions.update') }}" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
-                        <label for="course_id">Courses</label>
+                            <label for="course_id">Exam</label>
                             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
-                                    data-select2-id="1" tabindex="-1" aria-hidden="true"
-                                    name="course_id">
-                                @foreach($courses as $course)
-                                    <option value="{{$course->id}}" {{ ($course->id == $exam->course->id) ? 'selected':'' }}>
-                                     {{$course->name}}
-                                    </option>
+                                    data-select2-id="1" tabindex="-1" aria-hidden="true" name="exam_id">
+                                @foreach($exams as $exam)
+                                    <option value="{{$exam->id}}">{{$exam->name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Exam Name</label>
-                            <input type="text" class="form-control" name="name" id="exampleInputEmail1" value="{{ $exam->name }}" aria-describedby="emailHelp" placeholder="Enter Name">
-                        </div>
 
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Total Degree</label>
-                            <input type="text" class="form-control" name="degree" id="exampleInputEmail1" value="{{ $exam->degree }}" aria-describedby="emailHelp" placeholder="Enter degree">
+                            <label for="degree">Degree</label>
+                            <input type="text" class="form-control" name="degree" id="degree"
+                                   value="{{$question->degree}}"
+                                   placeholder="Enter Degree">
                         </div>
+
+                        <div class="form-group">
+                            <label for="question">Question</label>
+                            <input type="text" class="form-control" name="question"
+                                   id="question" value="{{$question->question}}"
+                                   placeholder="Enter a Question">
+                        </div>
+                        <div class="form-group">
+                            <label for="answer1">Answer 1</label>
+                            <input type="text" class="form-control" name="answer1"
+                                   id="answer1" value="{{ $question->choices[0]->choice }}"
+                                   placeholder="Enter an answer">
+                            <input type="radio" name="is_correct" value="answer1" @if($question->choices[0]->is_correct == 1) checked @endif> The Correct Answer<br>
+                        </div>
+
+                        <div class="form-group">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="answer1">Answer 2</label>
+                            <input type="text" class="form-control" name="answer2"
+                                   id="answer1" value="{{ $question->choices[1]->choice }}"
+                                   placeholder="Enter an answer">
+                            <input type="radio" name="is_correct" value="answer2" @if($question->choices[1]->is_correct == 1) checked @endif> The Correct Answer<br>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="answer3">Answer 3</label>
+                            <input type="text" class="form-control" name="answer3"
+                                   id="answer3" value="{{ $question->choices[2]->choice }}"
+                                   placeholder="Enter an answer">
+                            <input type="radio" name="is_correct" value="answer3" @if($question->choices[2]->is_correct == 1) checked @endif> The Correct Answer<br>
+                        </div>
+
                     </div>
-
-
-
-
 
                     <!-- /.card-body -->
 
