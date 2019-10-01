@@ -24,15 +24,19 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
         $exam = Exam::where('course_id', $course->id)->first();
-        foreach ($exam->questions as $question)
-            $answers = StudentAnswer::where('user_id', auth()->id())->where('question_id', $question->id)->exists();
+        if ($exam) {
+            foreach ($exam->questions as $question)
+                $answers = StudentAnswer::where('user_id', auth()->id())->where('question_id', $question->id)->exists();
+        }
+        else
+            $answers = false;
         return view('courses.show', compact('course', 'exam', 'answers'));
     }
 
     public function getExamResult($id)
     {
         $exam = Exam::find($id);
-        $questions = Question::where('exam_id',$id)->with('choices')->get();
+        $questions = Question::where('exam_id', $id)->with('choices')->pluck('id');
         dd($questions);
         $studentAnswers = StudentAnswer::where('user_id', auth()->id())->get();
     }
