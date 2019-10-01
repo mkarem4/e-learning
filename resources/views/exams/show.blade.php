@@ -38,21 +38,24 @@
                             <h4 class="title">Questions</h4>
                             <div class="content">
                                 <ol>
+                                    @php $i=1 @endphp
                                     @foreach($exam->questions as $question )
-                                        <input type="hidden" name="question{{ $question->id }}"
+                                        <input type="hidden" name="question{{ $i }}"
                                                value="{{ $question->id }}">
                                         <li>{{ $question->question}}</li><br>
                                         <ul>
                                             @foreach($question->choices as $choice)
                                                 <label class="checkbox-inline"><input type="radio"
                                                                                       value="{{ $choice->id }}"
-                                                                                      name="answer{{$question->id}}">{{ $choice->choice }}
+                                                                                      name="answer{{$i}}"
+                                                                                      required>{{ $choice->choice }}
                                                 </label><br>
                                             @endforeach
                                             <br>
                                             <hr>
                                             <br>
                                         </ul>
+                                        @php $i++ @endphp
                                     @endforeach
                                 </ol>
                             </div>

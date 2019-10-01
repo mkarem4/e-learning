@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exam;
-use App\Models\QuestionChoice;
 use App\Models\StudentAnswer;
 use Illuminate\Http\Request;
 
@@ -19,8 +18,9 @@ class ExamController extends Controller
     public function saveResult(Request $request)
     {
         $data = $request->except('_token');
+        $iMax = count($data)/2;
         $answers = [];
-        for ($i = 1; $i <= count($data) / 2; $i++) {
+        for ($i = 1; $i <= $iMax; $i++) {
             $question = 'question' . $i;
             $answer = 'answer' . $i;
             array_push($answers, array($request->$question, $request->$answer));
