@@ -82,8 +82,7 @@
                             <label for="level_id" class="col-md-4 col-form-label text-md-right">{{ __('Level') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="level_id" name="level_id">
-                                    <option value="0">Select Level</option>
+                                <select class="form-control" id="level_id" name="level_id" required>
                                     @foreach($levels as $level)
                                         <option value="{{ $level->id }}">{{ $level->name }}</option>
                                     @endforeach
