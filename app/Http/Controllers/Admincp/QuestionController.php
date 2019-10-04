@@ -58,18 +58,15 @@ class QuestionController extends Controller
             'is_correct' => 'required',
             'exam_id' => 'required'
         ]);
+        $is_correct1 = 0;
+        $is_correct2 = 0;
+        $is_correct3 = 0;
 
         if ($request->is_correct == 'answer1') {
             $is_correct1 = 1;
-            $is_correct2 = 0;
-            $is_correct3 = 0;
         } elseif ($request->is_correct == 'answer2') {
-            $is_correct1 = 0;
             $is_correct2 = 1;
-            $is_correct3 = 0;
         } else {
-            $is_correct1 = 0;
-            $is_correct2 = 0;
             $is_correct3 = 1;
         }
 

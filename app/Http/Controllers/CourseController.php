@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Question;
+use Illuminate\Http\Request;
 use App\Models\StudentAnswer;
 
 class CourseController extends Controller
@@ -33,11 +34,13 @@ class CourseController extends Controller
         return view('courses.show', compact('course', 'exam', 'answers'));
     }
 
-    public function getExamResult($id)
+    public function getExamResult(Request $request,$id)
     {
-        $exam = Exam::find($id);
-        $questions = Question::where('exam_id', $id)->with('choices')->pluck('id');
-        dd($questions);
-        $studentAnswers = StudentAnswer::where('user_id', auth()->id())->get();
+        $user_id = auth()->id();
+        $exam_id = $id;
+        $result =StudentAnswer::getAnswer($user_id ,$exam_id);
+        return view('exams.result');
+        //return $result[0]->score; 
+        
     }
 }
