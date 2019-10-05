@@ -25,7 +25,7 @@ class StudentAnswer extends Model
             'user_id' => $user_id,
             'exam_id' => $exam_id
           ));
-          return $results;
+          return $results[0];
 
 
 }

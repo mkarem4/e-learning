@@ -28,19 +28,19 @@ class CourseController extends Controller
         if ($exam) {
             foreach ($exam->questions as $question)
                 $answers = StudentAnswer::where('user_id', auth()->id())->where('question_id', $question->id)->exists();
-        }
-        else
+        } else
             $answers = false;
         return view('courses.show', compact('course', 'exam', 'answers'));
     }
 
-    public function getExamResult(Request $request,$id)
+    public function getExamResult($id)
     {
         $user_id = auth()->id();
-        $exam_id = $id;
-        $result =StudentAnswer::getAnswer($user_id ,$exam_id);
-        return view('exams.result');
-        //return $result[0]->score; 
-        
+        $exam = Exam::find($id);
+        $result = StudentAnswer::getAnswer($user_id, $id);
+        $percentage = ($result->score/$exam->degree)*100;
+        $degree = percnetage($percentage);
+        return view('exams.result', compact('result', 'exam','degree'));
+
     }
 }
