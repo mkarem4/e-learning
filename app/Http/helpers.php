@@ -45,7 +45,7 @@ function youtubeUrl($url)
 
 function percnetage($degree)
 {
-    if ($degree > 85)
+    if ($degree >= 85 && $degree <= 100)
         return 'Excellent';
     elseif ($degree >= 75)
         return 'Very Good';
