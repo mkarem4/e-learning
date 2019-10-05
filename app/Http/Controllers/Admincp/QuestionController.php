@@ -149,7 +149,6 @@ class QuestionController extends Controller
 
         $answers = [];
         array_push($answers, array($request->answer1, $is_correct1), array($request->answer2, $is_correct2), array($request->answer3, $is_correct3));
-
         $question = Question::findOrFail($id);
         $question->question = $request->question;
         $question->exam_id = $request->exam_id;
@@ -157,17 +156,17 @@ class QuestionController extends Controller
 
         if ($question->save()) {
             $id = $question->id;
-            QuestionChoice::where('question_id', $id)->delete();
-            foreach ($answers as $answer) {
-                $data = array(
+            $old_questions = QuestionChoice::where('question_id', $id)->get();
+            $i = 0;
+            foreach ($old_questions as $old_question) {
+                $old_question->update([
                     'question_id' => $id,
-                    'choice' => $answer[0],
-                    'is_correct' => $answer[1],
-                );
-                QuestionChoice::updateOrCreate($data);
+                    'choice' => $answers[$i][0],
+                    'is_correct' => $answers[$i][1],
+                ]);
+                $i++;
             }
         }
-
         return redirect('/admincp/questions')->with('success', 'Question updated successfully');
     }
 
