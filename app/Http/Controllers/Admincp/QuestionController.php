@@ -117,11 +117,12 @@ class QuestionController extends Controller
         $exams = Exam::whereIn('course_id', $courses)->get();
         $question = Question::findOrFail($id);
         $active = 'questions';
-        return view('admin.questions.edit', compact('courses','exams', 'active', 'question'));
+        return view('admin.questions.edit', compact('courses', 'exams', 'active', 'question'));
     }
 
     public function update(Request $request, $id)
     {
+
         $this->validate($request, [
             'degree' => 'required|integer',
             'question' => 'required|min:5',
@@ -156,16 +157,15 @@ class QuestionController extends Controller
 
         if ($question->save()) {
             $id = $question->id;
+            QuestionChoice::where('question_id', $id)->delete();
             foreach ($answers as $answer) {
                 $data = array(
                     'question_id' => $id,
                     'choice' => $answer[0],
                     'is_correct' => $answer[1],
                 );
-                QuestionChoice::destroy($id);
-                QuestionChoice::insert($data);
+                QuestionChoice::updateOrCreate($data);
             }
-
         }
 
         return redirect('/admincp/questions')->with('success', 'Question updated successfully');
