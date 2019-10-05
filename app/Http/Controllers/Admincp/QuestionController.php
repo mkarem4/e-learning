@@ -117,16 +117,9 @@ class QuestionController extends Controller
         $exams = Exam::whereIn('course_id', $courses)->get();
         $question = Question::findOrFail($id);
         $active = 'questions';
-        return view('admin.questions.edit', compact('exams', 'active', 'question'));
+        return view('admin.questions.edit', compact('courses','exams', 'active', 'question'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return Response
-     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
@@ -175,7 +168,7 @@ class QuestionController extends Controller
 
         }
 
-        return view('admin.questions.index')->with('success', 'Question updated successfully');
+        return redirect('/admincp/questions')->with('success', 'Question updated successfully');
     }
 
     /**

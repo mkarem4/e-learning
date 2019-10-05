@@ -43,7 +43,7 @@
                                     <td>{{ $question->question }}</td>
                                     <td>{{ $question->degree }}</td>
 
-                                    <td class="action_btns"><a href="/admincp/questions/{{$question->id}}/edit "
+                                    <td class="action_btns"><a href="/admincp/questions/{{$question->id}}/edit "  method="put"
                                                                class="btn btn-primary">Edit</a>
 
                                         <form action="{{ route('questions.destroy',$question->id) }}" method="post">
