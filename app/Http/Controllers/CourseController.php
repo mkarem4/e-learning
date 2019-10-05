@@ -40,7 +40,7 @@ class CourseController extends Controller
         $result = StudentAnswer::getAnswer($user_id, $id);
         $percentage = ($result->score/$exam->degree)*100;
         $degree = percnetage($percentage);
-        return view('exams.result', compact('result', 'exam','degree'));
+        return view('exams.result', compact('percentage', 'exam','degree'));
 
     }
 }

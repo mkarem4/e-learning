@@ -79,6 +79,8 @@
                             <h4 class="title">Exam</h4>
                             <div class="content">
                                You already had this exam
+                            </div>
+                            <div class="conetent">
                                 <a href="/exam/results/{{ $exam->id }}"
                                    class="primary-btn2 text-uppercase enroll rounded-0 text-white">View the result</a>
                             </div>

@@ -35,7 +35,12 @@
 
                         <h4 class="title">Result</h4>
                         <div class="content">
-                            {{ $degree }} - ({{ $result->score }}/{{ $exam->degree }})
+                            {{ $percentage }} % - {{ $degree }}
+                        </div>
+
+                        <div class="content">
+                            <a href="/courses/{{ $exam->course->id }}"
+                               class="primary-btn2 text-uppercase enroll rounded-0 text-white">Go to Course Material</a>
                         </div>
 
                     </div>
