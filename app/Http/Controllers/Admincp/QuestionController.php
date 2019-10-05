@@ -91,7 +91,7 @@ class QuestionController extends Controller
 
         }
 
-        return view('admin.questions.index')->with('success', 'Question added successfully');
+        return redirect('/admincp/questions')->with('success', 'Question added successfully');
     }
 
     /**
