@@ -45,13 +45,13 @@ function youtubeUrl($url)
 
 function percnetage($degree)
 {
-    if ($degree > 85)
+    if ($degree >= 85 && $degree <= 100)
         return 'Excellent';
-    elseif ($degree > 75)
+    elseif ($degree >= 75)
         return 'Very Good';
-    elseif ($degree > 65)
+    elseif ($degree >= 65)
         return 'Good';
-    elseif ($degree > 50)
+    elseif ($degree >= 50)
         return 'Pass';
     else
         return 'Failed';
