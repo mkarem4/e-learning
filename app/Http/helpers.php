@@ -47,11 +47,11 @@ function percnetage($degree)
 {
     if ($degree > 85)
         return 'Excellent';
-    elseif ($degree > 75)
+    elseif ($degree >= 75)
         return 'Very Good';
-    elseif ($degree > 65)
+    elseif ($degree >= 65)
         return 'Good';
-    elseif ($degree > 50)
+    elseif ($degree >= 50)
         return 'Pass';
     else
         return 'Failed';
