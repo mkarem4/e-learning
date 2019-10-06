@@ -53,7 +53,7 @@
                                     <tr>
                                         <th scope="row">{{ $answeredQuestion->id }}</th>
                                         <td>{{ $answeredQuestion->question }}</td>
-                                        <td>{{ $answeredQuestion->reference }}</td>
+                                        <td><a href="{{ $answeredQuestion->reference }}" class="primary-btn2 text-uppercase enroll rounded-0 text-white">View</a></td>
                                     </tr>
                                 @endforeach
                                 </tbody>
