@@ -38,6 +38,30 @@
                             {{ $percentage }} % - {{ $degree }}
                         </div>
 
+                        <h4 class="title">Answered questions wrong</h4>
+                        <div class="content">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Question</th>
+                                    <th scope="col">Reference</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($answeredQuestions as $answeredQuestion)
+                                    <tr>
+                                        <th scope="row">{{ $answeredQuestion->id }}</th>
+                                        <td>{{ $answeredQuestion->question }}</td>
+                                        <td>{{ $answeredQuestion->reference }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
                         <div class="content">
                             <a href="/courses/{{ $exam->course->id }}"
                                class="primary-btn2 text-uppercase enroll rounded-0 text-white">Go to Course Material</a>

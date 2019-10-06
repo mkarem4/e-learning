@@ -78,6 +78,13 @@
                             <input type="radio" name="is_correct" value="answer3"> The Correct Answer<br>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">YouTube Link Reference</label>
+                            <input type="text" class="form-control" name="youtube_link" id="exampleInputEmail1"
+                                   placeholder="Enter YouTube Link">
+                        </div>
+
                     </div>
 
                     <!-- /.card-body -->

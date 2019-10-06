@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Exam;
 use App\Models\Question;
+use App\Models\QuestionChoice;
 use Illuminate\Http\Request;
 use App\Models\StudentAnswer;
 
@@ -37,10 +38,19 @@ class CourseController extends Controller
     {
         $user_id = auth()->id();
         $exam = Exam::find($id);
+        $questions = Question::where('exam_id', $id)->pluck('id');
         $result = StudentAnswer::getAnswer($user_id, $id);
-        $percentage = ($result->score/$exam->degree)*100;
+        $percentage = ($result->score / $exam->degree) * 100;
         $degree = percnetage($percentage);
-        return view('exams.result', compact('percentage', 'exam','degree'));
+
+        // wrong answers
+        $stdAnswers = StudentAnswer::whereIn('question_id', $questions)->pluck('choice_id');
+        $choices = QuestionChoice::whereIn('id', $stdAnswers)->where('is_correct', 0)->with('question')->orderBy('question_id', 'ASC')->get();
+        $answeredQuestions = [];
+        foreach ($choices as $choice) {
+            $answeredQuestions[] = $choice->question;
+        }
+        return view('exams.result', compact('percentage', 'exam', 'degree','answeredQuestions'));
 
     }
 }

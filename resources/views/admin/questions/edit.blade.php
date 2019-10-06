@@ -24,8 +24,9 @@
         <div class="row">
             <div class="col-12">
                 <!-- form start -->
-                <form role="form" method='post' action="{{ route('questions.update',$question->id) }}" enctype="multipart/form-data">
-                @csrf
+                <form role="form" method='post' action="{{ route('questions.update',$question->id) }}"
+                      enctype="multipart/form-data">
+                    @csrf
                     @method('PUT')
                     <div class="card-body">
                         <div class="form-group">
@@ -57,7 +58,8 @@
                             <input type="text" class="form-control" name="answer1"
                                    id="answer1" value="{{ $question->choices[0]->choice }}"
                                    placeholder="Enter an answer">
-                            <input type="radio" name="is_correct" value="answer1" @if($question->choices[0]->is_correct == 1) checked @endif> The Correct Answer<br>
+                            <input type="radio" name="is_correct" value="answer1"
+                                   @if($question->choices[0]->is_correct == 1) checked @endif> The Correct Answer<br>
                         </div>
 
                         <div class="form-group">
@@ -69,7 +71,8 @@
                             <input type="text" class="form-control" name="answer2"
                                    id="answer1" value="{{ $question->choices[1]->choice }}"
                                    placeholder="Enter an answer">
-                            <input type="radio" name="is_correct" value="answer2" @if($question->choices[1]->is_correct == 1) checked @endif> The Correct Answer<br>
+                            <input type="radio" name="is_correct" value="answer2"
+                                   @if($question->choices[1]->is_correct == 1) checked @endif> The Correct Answer<br>
                         </div>
 
                         <div class="form-group">
@@ -77,7 +80,15 @@
                             <input type="text" class="form-control" name="answer3"
                                    id="answer3" value="{{ $question->choices[2]->choice }}"
                                    placeholder="Enter an answer">
-                            <input type="radio" name="is_correct" value="answer3" @if($question->choices[2]->is_correct == 1) checked @endif> The Correct Answer<br>
+                            <input type="radio" name="is_correct" value="answer3"
+                                   @if($question->choices[2]->is_correct == 1) checked @endif> The Correct Answer<br>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">YouTube Link Reference</label>
+                            <input type="text" class="form-control" name="youtube_link" id="exampleInputEmail1"
+                                   placeholder="Enter YouTube Link" value="{{ $question->reference }}">
                         </div>
 
                     </div>

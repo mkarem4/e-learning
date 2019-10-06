@@ -18,6 +18,7 @@ class CreateQuestionsTable extends Migration
             $table->string('question');
             $table->string('degree');
             $table->bigInteger('exam_id')->unsigned();
+            $table->string('reference')->nullable();
 
             $table->timestamps();
 

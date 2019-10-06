@@ -77,6 +77,10 @@ class QuestionController extends Controller
         $question->question = $request->question;
         $question->exam_id = $request->exam_id;
         $question->degree = $request->degree;
+        if ($request->youtube_link) {
+            $youtube_link = str_replace('watch?v=', 'embed/', request('youtube_link'));
+            $question->reference = $youtube_link;
+        }
 
         if ($question->save()) {
             $id = $question->id;
@@ -153,6 +157,11 @@ class QuestionController extends Controller
         $question->question = $request->question;
         $question->exam_id = $request->exam_id;
         $question->degree = $request->degree;
+
+        if ($request->youtube_link) {
+            $youtube_link = str_replace('watch?v=', 'embed/', request('youtube_link'));
+            $question->reference = $youtube_link;
+        }
 
         if ($question->save()) {
             $id = $question->id;
