@@ -11,7 +11,7 @@
                             <h1>Adaptive E-Learning System</h1>
                             <hr>
                             <p class="text-uppercase">
-                                Best online education service In the world
+                                Best online education service
                             </p>
                             <h3 class="text-uppercase mt-4 mb-5">
                                 based on student test outcome in collaborative environment
@@ -39,10 +39,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-5">
                     <div class="main_title">
-                        <h2 class="mb-3">Our Popular Courses</h2>
-                        <p>
-                            Replenish man have thing gathering lights yielding shall you
-                        </p>
+                        <h2 class="mb-3">Popular Courses</h2>
                     </div>
                 </div>
             </div>
